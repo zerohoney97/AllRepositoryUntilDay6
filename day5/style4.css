@@ -1,0 +1,69 @@
+.tab_menu > input {
+  display: none;
+}
+
+/* 인접한 형제요소 선택자 +  */
+/* tab_menu 클래스를 가지고 있는 태그의 자식중 input태그 바로 아래 붙은 태그
+     */
+.tab_menu > input + label {
+  display: inline-block;
+  padding: 30px;
+  background-color: gray;
+  color: white;
+  font-size: 14px;
+
+  /* 마우스를 올렸을때 보여줄 커서를 설정할 수있다. */
+  cursor: pointer;
+}
+
+/* checked 속성이 있는 input 태그 */
+/* tab_menu 클래스를 가지고 있는 태그 자식 input태그가 checked 속성이 있으면 인접 형제 태그인 label에 스타일을 적용시키겠다. */
+.tab_menu > input:checked + label {
+  background: #4c2eb8;
+  color: wheat;
+}
+
+.box {
+  width: 500px;
+  height: 600px;
+  background-color: #000;
+  margin: 0 auto;
+  display: none;
+}
+
+/* input태그중 클래스가 tab01이고 checked속성이 있을 때 형제요소중
+밑에있는 태구중에 item1클래스를 가지고 있는 태그 */
+input[class="tab01"]:checked ~ .item1 {
+  display: block;
+  color: white;
+}
+
+input[class="tab02"]:checked ~ .item2 {
+  display: block;
+  color: white;
+}
+
+input[class="tab03"]:checked ~ .item3 {
+  display: block;
+  color: white;
+}
+
+.textbox::before {
+  position: absolute;
+  content: "";
+  top: 6px;
+  left: 152px;
+  background-image: url("https://img.megabox.co.kr/static/pc/images/common/btn/btn-search-input.png");
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-size: 12px;
+}
+
+.textbox {
+  position: relative;
+}
+
+.textbox > input{
+    padding-right: 24px;
+}

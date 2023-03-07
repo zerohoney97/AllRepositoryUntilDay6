@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/day2.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="circle">
+      <div class="longArrow" id="long"></div>
+      <div class="shortArrow" id="short"></div>
+      <div class="inCircle"></div>
+    </div>
+  </body>
+  <script>
+    var longArrow = document.querySelector("#long");
+    var shortArrow = document.querySelector("#short");
+
+    var longArrowDegree = 0;
+    var shortArrowDegree = 0;
+    function movingClock() {
+      longArrow.style.transform = `rotate(${longArrowDegree}deg)`;
+      if (longArrowDegree >= 360) {
+        longArrowDegree = 0;
+        shortArrowDegree += 6;
+      }
+      shortArrow.style.transform = `rotate(${shortArrowDegree}deg)`;
+      setTimeout(() => {
+        longArrowDegree += 6;
+        movingClock();
+      }, 1000);
+    }
+
+    movingClock();
+  </script>
+</html>

@@ -1,0 +1,425 @@
+/* display:flex는 자동으로 width가 조절되지만 한 요소가 오바하게 된다면 다른 요소를 줄인다.
+ */
+
+body {
+  width: 1200px;
+  margin: auto;
+}
+
+.tab_input1 {
+  margin: 30px;
+  display: none;
+}
+.tab_input1 + label {
+  width: 220px;
+  font-size: 21px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 2px solid blue;
+  margin: -3px;
+}
+.tab_input2 {
+  margin: 30px;
+  display: none;
+}
+.tab_input2 + label {
+  width: 220px;
+  display: inline-block;
+  font-size: 21px;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 2px solid blue;
+  margin: -3px;
+
+}
+.tab_input3 {
+  margin: 30px;
+  display: none;
+}
+.tab_input3 + label {
+  font-size: 21px;
+  display: inline-block;
+  width: 220px;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 2px solid blue;
+  margin: -3px;
+
+}
+.tab_input4 {
+  margin: 30px;
+  display: none;
+}
+.tab_input4 + label {
+  width: 220px;
+  display: inline-block;
+  font-size: 21px;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 2px solid blue;
+  margin: -3px;
+
+}
+.tab_input5 {
+  margin: 30px;
+  display: none;
+}
+.tab_input5 + label {
+  width: 220px;
+  display: inline-block;
+  font-size: 21px;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 2px solid blue;
+  margin: -3px;
+
+}
+
+input[class="tab_input1"]:checked + label {
+  text-align: center;
+  border-top: 2px solid blue;
+  border-left: 2px solid blue;
+  border-right: 2px solid blue;
+  border-bottom: 2px solid white;
+
+  font-size: 21px;
+  color: #503396;
+}
+input[class="tab_input2"]:checked + label {
+  text-align: center;
+  border-top: 2px solid blue;
+  border-left: 2px solid blue;
+  border-right: 2px solid blue;
+  border-bottom: 2px solid white;
+
+  font-size: 21px;
+  color: #503396;
+}
+input[class="tab_input3"]:checked + label {
+  text-align: center;
+  border-top: 2px solid blue;
+  border-left: 2px solid blue;
+  border-right: 2px solid blue;
+  border-bottom: 2px solid white;
+
+  font-size: 21px;
+
+  color: #503396;
+}
+input[class="tab_input4"]:checked + label {
+  text-align: center;
+  border-top: 2px solid blue;
+  border-left: 2px solid blue;
+  border-right: 2px solid blue;
+  border-bottom: 2px solid white;
+
+  font-size: 21px;
+  color: #503396;
+}
+input[class="tab_input5"]:checked + label {
+  text-align: center;
+  border-top: 2px solid blue;
+  border-left: 2px solid blue;
+  border-right: 2px solid blue;
+  border-bottom: 2px solid white;
+
+  font-size: 21px;
+  color: #503396;
+}
+
+@keyframes tab {
+}
+
+.movie-list-util {
+  position: relative;
+  margin-top: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 43px;
+  height: 21px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.movie-list-util > span > span:nth-child(2) {
+  margin-left: 10px;
+}
+.movie-list-util > span > span:nth-child(3) {
+  margin-left: 50px;
+}
+
+.search-bar {
+  position: absolute;
+  right: 0;
+}
+
+.search-bar > input {
+  padding-right: 30px;
+  width: 190px;
+  height: 34px;
+}
+
+.search-bar::before {
+  content: "";
+  background-image: url("https://img.megabox.co.kr/static/pc/images/common/btn/btn-search-input.png");
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 12px;
+  right: 5px;
+  background-repeat: no-repeat;
+}
+
+.movie-list {
+  margin-top: 30px;
+}
+
+.movie-list-contents {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-content {
+  position: relative;
+}
+.movie-content > span:nth-child(5) {
+  border-right: 1px solid gray;
+}
+.movie-content > span:nth-child(6) {
+  margin-left: 5px;
+}
+.movie-content img {
+  width: 230px;
+  height: 331px;
+}
+.movie-content > span:first-child {
+  color: white;
+  position: absolute;
+  font-size: 40px;
+  left: 10px;
+}
+
+.story {
+  width: 191px;
+  height: 292px;
+  position: absolute;
+  display: none;
+  background-color: black;
+  color: white;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.movie-content > img:hover + .story {
+  display: block;
+}
+
+/* 스토리가 block이 되는 순간, 포인터는 story 를 가리키게됨.그 때 display는 none이되고(story에 포인터를 올린 판정이 되므로)
+ 다시 display:block이 됨. 이를 방지하기위해 story에 올려놨을 때도 block으로 유지시켜야함->.story:hover{
+    display: block;
+}사용*/
+.story:hover {
+  display: block;
+}
+
+.movie-title {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-title > h2 {
+  width: 203px;
+  height: 29px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.age-12 {
+  background-image: url("https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png");
+  background-size: 23px 23px;
+  width: 23px;
+  height: 23px;
+  background-repeat: no-repeat;
+  align-self: center;
+}
+
+.age-all {
+  background-image: url("https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png");
+  background-size: 23px 23px;
+  width: 23px;
+  height: 23px;
+  background-repeat: no-repeat;
+  align-self: center;
+}
+.age-15 {
+  background-image: url("https://img.megabox.co.kr/static/pc/images/common/txt/15_46x46.png");
+  background-size: 23px 23px;
+  width: 23px;
+  height: 23px;
+  background-repeat: no-repeat;
+  align-self: center;
+}
+
+.option {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.option span {
+  margin: 5px;
+}
+
+.option > span:nth-child(1) {
+  width: 72px;
+  height: 36px;
+  border: 1px solid gray;
+  background: white;
+  color: #503396;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.option > .not-dolby {
+  width: 144px;
+  height: 36px;
+  border: 1px solid #503396;
+  background: #503396;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  cursor: pointer;
+
+}
+.option > span[class="dolby"] {
+  width: 72px;
+  height: 36px;
+  border: 1px solid #503396;
+  background: #503396;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  cursor: pointer;
+
+}
+
+.option > span:nth-child(3) {
+  width: 72px;
+  height: 36px;
+  border: 1px solid #503396;
+  background: #503396;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  cursor: pointer;
+
+}
+.option > span:nth-child(3) > img {
+  width: 49px;
+  height: 21px;
+}
+
+/* 태그 코너 */
+.box-office {
+  display: none;
+}
+input[class="tab_input1"]:checked ~ .box-office {
+  display: block;
+}
+.soon {
+  display: none;
+}
+input[class="tab_input2"]:checked ~ .soon {
+  display: block;
+}
+
+.special {
+  display: none;
+}
+input[class="tab_input3"]:checked ~ .special {
+  display: block;
+}
+.society {
+  display: none;
+}
+input[class="tab_input4"]:checked ~ .society {
+  display: block;
+}
+.classic {
+  display: none;
+}
+input[class="tab_input5"]:checked ~ .classic {
+  display: block;
+}

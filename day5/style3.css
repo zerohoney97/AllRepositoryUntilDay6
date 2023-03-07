@@ -1,0 +1,17 @@
+/* 폰트파일을 다운받고
+@font-face 작성한다.
+@font-face{
+    font-family:이곳에 사용한 폰트의 이름을 정해준다.
+    src:url(사용할 폰트 파일의 경로를 적어준다.)
+    확인방법은 개발자 모드에서 computed로 들어가면 Rendered Fonts에서 알 수 있다!
+ */
+
+@font-face {
+  font-family: "noto";
+  src: url("./Noto_Sans_KR/NotoSansKR-Black.otf") format("truetype");
+}
+
+body {
+    /*  */
+    font-family: 'noto';
+}

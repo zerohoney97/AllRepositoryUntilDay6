@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메뉴판</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #restaurant_name {
+        color: salmon;
+        font-size: 50px;
+        text-align: center;
+      }
+      .menu_container {
+        display: flex;
+        width: 80%;
+        height: 800px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .ramen_container {
+        text-align: center;
+        border: 2px solid salmon;
+      }
+    </style>
+    <!-- 간단한 실습 메뉴판 만들기 
+    음식 메뉴는 하나의 묶음으로 만드세요(영역)
+메뉴 밑으로 음식 이름
+가격
+화면이 줄어들면 밑으로 떨어져서 나열 -->
+  </head>
+  <body>
+    <h1 id="restaurant_name">6개월 전통 라멘집</h1>
+
+    <div class="menu_container">
+      <div class="ramen_container">
+        <img src="./ramen_1.jpeg" alt="카라이 라멘" />
+        <h2>카라이 라멘</h2>
+        <h3>9500원</h3>
+      </div>
+      <div class="ramen_container">
+        <img src="./ramen_2.jpeg" alt="돈코츠 라멘" />
+        <h2>돈코츠 라멘</h2>
+        <h3>8500원</h3>
+      </div>
+      <div class="ramen_container">
+        <img src="./ramen_3.jpeg" alt="츠케맨" />
+        <h2>츠케맨</h2>
+        <h3>9500원</h3>
+      </div>
+      <div class="ramen_container">
+        <img src="./ramen_4.jpeg" alt="메챠쿠챠카라이라멘" />
+        <h2>엄청매운 라멘</h2>
+        <h3>9500원</h3>
+      </div>
+      <div class="ramen_container">
+        <img src="./ramen_5.jpeg" alt="쇼유라멘" />
+        <h2>쇼유라멘</h2>
+        <h3>9500원</h3>
+      </div>
+    </div>
+  </body>
+</html>

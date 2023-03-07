@@ -1,0 +1,221 @@
+.container {
+  width: 880px;
+}
+
+.title {
+  display: flex;
+  position: relative;
+}
+
+.icon {
+  background-image: url("https://yt3.ggpht.com/ytc/AL5GRJWQ98RcTbIlPxUctFxq4yUPCd6syW920fyWFCNM=s68-c-k-c0x00ffffff-no-rj");
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  border-radius: 50%;
+  position: relative;
+  bottom: 10px;
+}
+.content-text {
+  width: 120px;
+  margin-left: 20px;
+}
+.content-text span:last-child {
+  color: silver;
+}
+.channel {
+  font-size: 15px;
+  font-weight: bold;
+}
+.sub-num {
+  font-size: 13px;
+}
+.subscribe {
+  width: 56px;
+  height: 36px;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.good {
+  position: relative;
+  width: 87px;
+  height: 36px;
+  background-color: gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px 0 0 20px;
+  margin-left: 200px;
+}
+.good-icon {
+  background-image: url("./good.png");
+  background-size: cover;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 10px;
+}
+
+.good-text {
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+}
+
+.good-pop{
+    width: 200px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    position: absolute;
+    border-radius: 20px;
+    text-align: center;
+    vertical-align: middle;
+    top: 43px;
+    left: 395px;
+    display: none;
+}
+
+.good:hover ~ .good-pop{
+    
+    display: block;
+}
+
+.bad {
+  width: 52px;
+  height: 36px;
+  background-color: gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid black;
+  border-radius: 0 20px 20px 0;
+}
+
+.bad-icon {
+  background-image: url("./bad.png");
+  background-size: cover;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.bad-pop{
+    width: 250px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    position: absolute;
+    border-radius: 20px;
+    text-align: center;
+    vertical-align: middle;
+    top: 43px;
+    left: 410px;
+    display: none;
+}
+
+.bad:hover ~ .bad-pop{
+    
+    display: block;
+}
+
+.share {
+  width: 80px;
+  height: 36px;
+  position: relative;
+  background-color: gainsboro;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.share-icon {
+  background-image: url("./share.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 5px;
+}
+
+.share-text {
+  position: absolute;
+  right: 10px;
+  bottom: 7px;
+}
+
+.download {
+  width: 132px;
+  height: 36px;
+  position: relative;
+  background-color: gainsboro;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.download-icon {
+  background-image: url("./download.png");
+  background-size: cover;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 5px;
+  top: 9px;
+}
+
+.download-text {
+  position: absolute;
+  right: 10px;
+  bottom: 7px;
+}
+
+.more {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  background-color: gainsboro;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.extra-container {
+  width: 853px;
+  height: 104px;
+  background-color: gainsboro;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.extra-container:hover{
+    height: 268px;
+}
+
+.mendatory-content{
+
+}
+
+.views {
+  font-weight: bold;
+}
+
+.date {
+  font-weight: bold;
+}
+
+.tag {
+}
+
+.extra{
+
+}
