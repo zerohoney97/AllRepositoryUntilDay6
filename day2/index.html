@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="width: 100%; height: 200vh">
+      <!-- a태그의 href에 #+태그의 id를 작성하면 해당 태그로 이동 -->
+      <a href="#list">두번 째 리스트로 이동</a>
+      <div style="height: 100vh">
+        <h1>첫번 째 리스트</h1>
+        <ul>
+          <li>첫번째</li>
+          <li>두번째</li>
+        </ul>
+      </div>
+      <!-- a태그의 href #을 작성하면 페이지의 최상단으로 이동 -->
+      <a href="#">위로 이동</a>
+      <div id="list">
+        <h1>두 번째 리스트</h1>
+        <ol>
+          <li>첫번째</li>
+          <li>두번째</li>
+        </ol>
+      </div>
+    </div>
+    지금까지 태그들
+    <div>가장 기본적인 영역(욕심쟁이)</div>
+    <p>문단 텍스트</p>
+    <span
+      >인라인 형식의 태그(양보하는 아이,본인 자리 차지 이후 옆으로 형제태그 나열
+      가능</span
+    >
+    줄내림 <br />
+    <h1>제목으로 주로 사용하는 태그</h1>
+
+    번호가 매겨진 리스트를 작성할 때
+    <ol >
+      ol태그는 li와
+      <li>한쌍</li>
+    </ol>
+    <ul>
+      번호가 매겨지지않은 리스트를 작성할 때 li와
+      <li>한쌍</li>
+    </ul>
+    <div>
+      페이지를 이동하거나 해당 태그로 브라우저의 스크롤을 이동 시킬 때
+      <a href="">이동</a>
+      이미지는 파일 경로나 주소를 입력
+      <img src="" alt="대체 문구(이미지가 정상적으로 불러와지지 않았을 때)" />
+    </div>
+    이런 속성의 명칭은 attribute속성으로 style 같은 것들
+    <div style="display: block; font-size: xx-large">
+      속성을 줄 때는 속성명="속성의 내용"
+    </div>
+    
+  </body>
+</html>

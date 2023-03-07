@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>table</title>
+  </head>
+  <body>
+    <!-- 표를 작성하는데 제일 부모 태그 -->
+    <!-- 예를 들어 ul태그 안에 li태그가 있는것과 같다. -->
+    <!-- 테이블에 border-collapse 속성을 추가하면 떨어져 있던 선이 겹쳐진다. -->
+    <!-- background-color 태그에 색깔적용 -->
+    <table style="border-collapse: collapse">
+      <!-- caption 태그로 테이블의 이름을 작성해준다. -->
+      <caption>
+        테이블의 이름
+      </caption>
+      <!-- column의 줄임말, 열 -->
+      <col style="width: 50px" />
+      <col style="width: 100px" />
+      <col style="width: 200px" />
+      <col style="width: 200px" />
+      <col style="width: 200px" />
+      <tr>
+        <!-- 테이블 제일 위의 이름(테이블 헤더) -->
+        <!-- 보더는 테두리를 바꿔줄 수 있는 속성이다. 속성의 value로는 1.선읙 굵기 2.선의 타입 3.선의 색깔 -->
+        <th style="border: 1px solid black">번호</th>
+        <th style="border: 1px solid black">이름</th>
+        <th style="border: 1px solid black">나이</th>
+        <th style="border: 1px solid black">성별</th>
+        <th style="border: 1px solid black">국적</th>
+      </tr>
+      <tr>
+        <th style="border: 1px solid black">1</th>
+        <td style="border: 1px solid black">이순현</td>
+        <td style="border: 1px solid black">비밀</td>
+        <!-- col span은 가로로 병합을 시켜준다, -->
+        <td colspan="2" style="border: 1px solid black">남자</td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid black">2</th>
+        <td style="border: 1px solid black">이순현</td>
+        <td style="border: 1px solid black">비밀</td>
+        <td style="border: 1px solid black">남자</td>
+        <!-- row span으로 차지하고 싶은 영역을 설정할 수 있음 즉, 세로로 병합시켜준다. -->
+        <td rowspan="2" style="border: 1px solid black">대한민국</td>
+      </tr>
+      <tr>
+        <th style="border: 1px solid black">3</th>
+        <td style="border: 1px solid black">이순현</td>
+        <td style="border: 1px solid black">비밀</td>
+        <td colspan="2" style="border: 1px solid black">남자</td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.sub_container {
+  display: flex;
+}
+
+.content_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content {
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text_container{
+    text-align: center;
+}

@@ -1,0 +1,51 @@
+@media screen and (max-width: 1200px) {
+  .container {
+    border: 30px solid red;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container {
+    border: 30px solid blue;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    border: 30px solid green;
+  }
+}
+
+.container {
+  width: 600px;
+  height: 600px;
+  position: relative;
+}
+
+.container > div {
+  width: 300px;
+  height: 300px;
+  background-image: url(./bor.jpeg);
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container:hover > div {
+  animation: bor_ani 5s ease;
+}
+
+@keyframes bor_ani {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  100% {
+    border-radius: 50%;
+    background-image: url(./ana.jpeg);
+    background-size: cover;
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
