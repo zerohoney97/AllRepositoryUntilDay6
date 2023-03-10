@@ -1,0 +1,428 @@
+@font-face {
+  font-family: "noto";
+  src: url(../../day5/Noto_Sans_KR/NotoSansKR-Black.otf);
+}
+@font-face {
+  font-family: "noto-light";
+  src: url("../../day5/Noto_Sans_KR/NotoSansKR-Light.otf");
+}
+body {
+  font-family: sans-serif;
+}
+div,
+span {
+  color: #37352f;
+}
+
+.nav {
+  width: 100%;
+  height: 45px;
+  position: fixed;
+  background: white;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  top: 0;
+  z-index: 2;
+}
+
+.progress-bar {
+  border: 1px solid rgb(3, 169, 244);
+  width: 400px;
+  margin-top: 46px;
+  position: absolute;
+}
+.search-divide {
+  position: absolute;
+  right: 8px;
+  align-self: center;
+}
+
+.searchNew {
+  width: 14px;
+  height: 14px;
+}
+
+.container {
+  width: 708px;
+  margin: auto;
+  position: relative;
+}
+
+h1 {
+  font-family: "noto";
+  color: rgb(55, 53, 47);
+}
+
+.grduated-picture {
+  width: 708px;
+  height: 688px;
+}
+.divide-line {
+  border: 1px solid rgb(228, 227, 226);
+  width: 100%;
+}
+
+.introduce {
+  height: 1000px;
+}
+
+.introduce-img {
+  width: 708px;
+  height: 510px;
+}
+
+.introduce-C {
+}
+.introduce-title {
+  font-family: "noto";
+  color: rgb(55, 53, 47);
+  font-size: 24px;
+}
+
+.introduce-content {
+  border-left: 2px solid rgb(55, 53, 47);
+  height: 90px;
+  white-space: pre-wrap;
+  font-family: "noto-light";
+  position: relative;
+}
+
+.foot-content {
+  width: 100%;
+  height: 30px;
+  top: 100px;
+  display: flex;
+}
+
+.foot-content span {
+  font-family: "noto";
+}
+
+.plus-btn {
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+}
+.css-1l4g0e8 {
+  width: 0.6875em;
+  height: 0.6875em;
+  fill: inherit;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 200ms ease-out 0s;
+  transition: transform 200ms ease-out 0s;
+  opacity: 1;
+  -webkit-transform: rotateZ(90deg);
+  -moz-transform: rotateZ(90deg);
+  -ms-transform: rotateZ(90deg);
+  transform: rotateZ(90deg);
+}
+
+.introduce-dream {
+  margin-top: 100px;
+}
+
+.curriculum {
+  width: 100%;
+  position: relative;
+}
+
+.who {
+  background-color: rgb(241, 241, 239);
+  border-radius: 4px;
+  padding: 20px;
+  margin: 10px;
+}
+.who > span:first-child::before {
+  content: "👨‍🎓";
+}
+.who > span:nth-child(1) {
+  font-size: 16px;
+  font-family: "noto";
+}
+.who > span:nth-child(3) {
+  font-family: "noto-light";
+  margin-left: 10px;
+}
+.who > span:nth-child(5) {
+  color: rgb(155, 154, 151);
+  font-family: "noto-light";
+  margin-left: 10px;
+}
+
+.how-long {
+  margin: 10px;
+  background-color: rgb(241, 241, 239);
+  border-radius: 4px;
+  padding: 20px;
+}
+.how-long > span:first-child::before {
+  content: "🗓️";
+}
+.how-long > span:nth-child(1) {
+  font-size: 16px;
+  font-family: "noto";
+}
+
+.how-long > span:nth-child(3) {
+  font-family: "noto-light";
+  margin-left: 15px;
+}
+.how-much {
+  margin: 10px;
+  background-color: rgb(241, 241, 239);
+  border-radius: 4px;
+  padding: 20px;
+}
+.how-much::before {
+  content: "💡";
+}
+
+.how-much > span:nth-child(1) {
+  font-size: 16px;
+  font-family: "noto";
+}
+.how-much > span:nth-child(3) {
+  color: red;
+  font-family: "noto-light";
+  text-decoration: line-through;
+  margin-left: 15px;
+}
+.how-much > span:nth-child(5) {
+  color: red;
+  font-family: "noto-light";
+  margin-left: 15px;
+}
+.event {
+  margin: 10px;
+  background-color: rgb(241, 241, 239);
+  border-radius: 4px;
+  padding: 20px;
+}
+.event::before {
+  content: "💡";
+}
+.event > span:nth-child(1) {
+  font-size: 16px;
+  font-family: "noto";
+}
+
+.event > span:nth-child(3) {
+  font-family: "noto-light";
+  margin-left: 15px;
+}
+
+.enroll {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* 두번 째 컨테이너 */
+
+.container2 {
+  width: 708px;
+  margin: auto;
+}
+
+.our-philosophy {
+  margin-top: 20px;
+}
+
+.philosophy {
+  font-size: 1.875em;
+  font-family: "noto";
+}
+
+.philosophy::before {
+  content: "📖";
+}
+
+.philosophy-title {
+  font-family: "noto";
+  color: #37352f;
+}
+.philosophy-content1 {
+  border-left: 2px solid rgb(55, 53, 47);
+}
+
+.philosophy-content1 > span > span:nth-child(1) {
+  font-family: "noto";
+}
+
+.philosophy-content1 > span > span > span:nth-child(5) {
+  background: rgb(251, 243, 219);
+}
+
+.philosophy-content2 {
+  border-left: 2px solid rgb(55, 53, 47);
+}
+
+.philosophy-content2 > div > span:nth-child(3) {
+  font-family: "noto";
+}
+
+.philosophy-content2 > div > span:nth-child(5) {
+  font-family: "noto";
+  background: rgb(251, 243, 219);
+}
+
+.philosophy-content3 {
+  border-left: 2px solid rgb(55, 53, 47);
+}
+
+.philosophy-content3 > div > span:nth-child(2) {
+  font-family: "noto";
+  background: rgb(251, 243, 219);
+}
+
+/* 세번째 컨테이너 */
+
+.container3 {
+  width: 708px;
+  margin: auto;
+}
+
+.container3-title {
+  font-size: 24px;
+  font-family: "noto";
+}
+
+.youtube-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.youtube-container-content {
+  margin-left: 28px;
+}
+
+.who-will-be {
+  width: 100%;
+}
+.who-will-be-content {
+  margin-top: 30px;
+  display: flex;
+}
+.who-will-be-content-text {
+  margin: 20px;
+}
+.who-will-be-content-text-title {
+  font-size: 20px;
+  font-family: "noto";
+  text-decoration: underline;
+}
+
+.who-will-be-content-text-title + div {
+  font-family: "noto-light";
+}
+
+.who-will-be-content-text-title + div > span:nth-child(2) {
+  background: rgb(251, 243, 219);
+}
+
+.after-class {
+  margin-top: 50px;
+}
+
+.question {
+  margin-top: 60px;
+}
+
+.council {
+  margin-top: 30px;
+}
+
+.enroll-center {
+  color: rgb(55, 53, 47);
+  border-bottom: 0.05em solid rgba(55, 53, 47, 0.4);
+  opacity: 0.7;
+  cursor: pointer;
+}
+.enroll-center:hover {
+  color: black;
+}
+
+.left-council {
+  width: 70%;
+  padding: 12px;
+}
+.go-gyung {
+  border: 1px solid rgba(55, 53, 47, 0.2);
+  width: 100%;
+  height: 108px;
+  text-decoration: none;
+  display: flex;
+  margin-top: 10px;
+}
+.go-gyung > div,
+span {
+  font-family: "noto-light";
+}
+
+.right-council {
+  width: 30%;
+}
+
+.footer {
+  width: 708px;
+  margin: auto;
+  font-weight: bold;
+  margin-top: 200px;
+  margin-bottom: 100px;
+}
+
+/* 고정 버튼 */
+
+.fixed-position {
+  position: fixed;
+  bottom: 8px;
+  z-index: 2;
+}
+
+.enroll-btn {
+  width: 708px;
+  height: 48px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(84, 84, 226);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgb(55 53 47 / 40%) 0px 0px 4px 2px;
+  font-weight: 700;
+  border-radius: 8px;
+  bottom: 8px;
+  z-index: 2;
+}
+
+.kakao-council {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+}
+
+.top {
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 0 4px 4px #d6d6d6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: fixed;
+  right: 5px;
+  bottom: -50px;
+  transition: all 0.5s;
+  cursor: pointer;
+  background: white;
+}

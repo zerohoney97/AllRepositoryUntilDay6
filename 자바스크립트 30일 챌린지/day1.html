@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/day1.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="boxContainer">
+      <div class="box" id="drum" onclick="sound('drum')">
+        <div class="inBoxText">
+          <div style="font-size: xx-large">A</div>
+          <div style="color: yellow">Drum</div>
+        </div>
+      </div>
+      <div class="box" id="clap" onclick="sound('clap')"><div class="inBoxText">
+        <div class="inBoxText">
+        <div style="font-size: xx-large">B</div>
+        <div style="color: yellow">clap</div>
+        </div>
+      </div>
+    </div>
+      <div class="box" id="napal" onclick="sound('trumphet')"><div class="inBoxText">
+        <div class="inBoxText">
+
+        <div style="font-size: xx-large">C</div>
+        <div style="color: yellow">trumphet</div>
+        </div>
+      </div>
+    </div>
+      <div class="box" id="violin" onclick="sound('violin')"><div class="inBoxText">
+        <div class="inBoxText">
+        <div style="font-size: xx-large">D</div>
+        <div style="color: yellow">violin</div>
+        </div>
+      </div>
+    </div>
+      <div class="box" id="piano" onclick="sound('piano')"><div class="inBoxText">
+        <div class="inBoxText">
+        <div style="font-size: xx-large">E</div>
+        <div style="color: yellow">piano</div>
+        </div>
+      </div>
+    </div></div>
+    </div>
+  </body>
+
+  <script>
+    function sound(message) {
+      alert(message);
+      setTimeout(()=>{
+        url=`https://www.google.com/search?q=${message}&oq=${message}&aqs=chrome..69i57j46i131i433i512j0i512l4j46i512j0i512l3.4898j0j7&sourceid=chrome&ie=UTF-8`
+        location.href=url
+      },1000)
+    }
+  </script>
+</html>

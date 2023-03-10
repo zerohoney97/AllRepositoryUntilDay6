@@ -1,0 +1,34 @@
+body{
+
+    background-image: url('../black.jpg')
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  border-color: black;
+  border: solid whitesmoke 10px;
+  border-radius: 10%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.box:hover {
+  transition: all 1s;
+  background-color: bisque;
+}
+.boxContainer {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inBoxText {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: aqua;
+}

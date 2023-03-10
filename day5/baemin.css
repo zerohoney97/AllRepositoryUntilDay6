@@ -1,0 +1,19 @@
+body {
+  background-color: rgb(42, 193, 188);
+  width: 100%;
+  height: 100%;
+}
+
+.navigation {
+  width: 100%;
+  height: 110px;
+}
+
+.navigation > span {
+  border: 1px solid white;
+  border-radius: 20px;
+  width: 140px;
+  height: 110px;
+  background-color: white;
+  color: rgb(42, 193, 188);
+}
