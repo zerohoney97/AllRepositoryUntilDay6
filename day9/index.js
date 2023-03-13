@@ -220,7 +220,7 @@ let count = 0;
 let result2 = true;
 let whoFirst = "";
 while (count <= 20 && firstMoney !== 0) {
-  com_num = parseInt(Math.random()*3);
+  com_num = parseInt(Math.random() * 3);
   console.log(com_num);
   //   parseInt를 연습하기위해 변환
   switch (com_num) {
@@ -244,975 +244,232 @@ while (count <= 20 && firstMoney !== 0) {
   if (battingMoney < 2000) {
     alert("상남자 특)2000원 이상 배팅함");
     continue;
-  } else {
-    user_num = prompt("가위,바위,보 중 하나를 입력하세요 ㅎㅎ");
-    // 2천원 이상 배팅 했을시 시작
-    switch (user_num) {
-      // 맨 처름 가위
-      case "가위":
-        switch (com_num) {
+  } else if(battingMoney > firstMoney){
+    alert('마이너스 통장은 안됩니다 ㅎㅎ')
+  }
+
+  user_num = prompt("가위,바위,보 중 하나를 입력하세요 ㅎㅎ");
+  // 2천원 이상 배팅 했을시 시작
+  switch (user_num) {
+    // 맨 처름 가위
+    case "가위":
+      switch (com_num) {
+        case "가위":
+          alert("비겼습니다!");
+          continue;
+          break;
+        case "바위":
+          // 선공권 컴퓨터
+          alert("컴퓨터가 바위를 냈군요! 패배,컴퓨터가 선공을 가져갑니다");
+          whoFirst = "com";
+          break;
+        case "보":
+          alert("컴퓨터가 보를 냈군요! 승리! 당신이 선공권을 가져갑니다!");
+          whoFirst = "use";
+          // 선공권 유저 시작
+          break;
+
+        default:
+          break;
+      }
+      break;
+    // 맨 처음 바위
+    case "바위":
+      switch (com_num) {
+        case "가위":
+          // 선공권 유저 시작
+          alert("컴퓨터가 가위를 냈군요! 승리! 당신이 선공권을 가져갑니다!");
+          whoFirst = "use";
+
+          break;
+        case "바위":
+          alert("비겼습니다!");
+          continue;
+
+          break;
+        case "보":
+          // 선공권 컴퓨터 시작
+          alert("컴퓨터가 보를 냈군요! 패배,컴퓨터가 선공을 가져갑니다");
+          whoFirst = "com";
+
+          break;
+
+        default:
+          break;
+      }
+
+      break;
+    // 맨 처음 보
+    case "보":
+      switch (com_num) {
+        case "가위":
+          // 선공권 컴퓨터 시작
+          alert("컴퓨터가 가위를 냈군요! 패배,컴퓨터가 선공을 가져갑니다");
+          whoFirst = "com";
+
+          break;
+        case "바위":
+          alert("컴퓨터가 가위를 냈군요! 승리! 당신이 선공권을 가져갑니다!");
+          whoFirst = "use";
+
+          // 선공권 유저 시작
+
+          break;
+        case "보":
+          alert("비겼습니다!");
+          continue;
+          break;
+
+        default:
+          break;
+      }
+
+      break;
+
+    default:
+      alert("가위,바위,보 중 하나를 정확하게 입력해 주세요!");
+
+      break;
+  }
+  comSecondNum = parseInt(Math.random() * 3);
+  switch (comSecondNum) {
+    case 0:
+      comSecondNum = "가위";
+      break;
+    case 1:
+      comSecondNum = "바위";
+  
+      break;
+    case 2:
+      comSecondNum = "보";
+  
+      break;
+  
+    default:
+      break;
+  }
+  
+  while (result2) {
+    userSecondNum = prompt("묵찌빠 입니다. 묵,찌,빠를 입력해주세요!");
+    // 묵찌빠 결과창!
+    switch (userSecondNum) {
+      case "찌":
+        switch (comSecondNum) {
           case "가위":
-            alert("비겼습니다!");
+            if (whoFirst === "com") {
+              firstMoney -= battingMoney * 2;
+              result2 = false;
+              count++;
+              alert(
+                `컴퓨터가 가위를 냈습니다. 패배!${
+                  20 - count
+                }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
+              );
+            } else {
+              firstMoney += battingMoney * 2;
+              result2 = false;
+              count++;
+              alert(
+                `컴퓨터가 가위를 냈습니다. 승리!${
+                  20 - count
+                }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
+              );
+            }
             break;
           case "바위":
-            // 선공권 컴퓨터
-            alert("컴퓨터가 바위를 냈군요! 패배,컴퓨터가 선공을 가져갑니다");
-
-            //   묵찌빠 시작
-            comSecondNum = parseInt(Math.random()*3);
-
-            switch (comSecondNum) {
-              case 0:
-                comSecondNum = "가위";
-                break;
-              case 1:
-                comSecondNum = "바위";
-
-                break;
-              case 2:
-                comSecondNum = "보";
-
-                break;
-
-              default:
-                break;
-            }
-            result2 = true;
+            alert("컴퓨터가 바위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다.");
             whoFirst = "com";
-            while (result2) {
-              userSecondNum = prompt("묵찌빠 입니다. 묵,찌,빠를 입력해주세요!");
-              // 묵찌빠 결과창!
-              switch (userSecondNum) {
-                case "찌":
-                  switch (comSecondNum) {
-                    case "가위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count += 1;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                      }
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-                case "묵":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "바위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-                case "빠":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "보":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-              }
-            }
             break;
           case "보":
-            alert("컴퓨터가 보를 냈군요! 승리! 당신이 선공권을 가져갑니다!");
-            // 선공권 유저 시작
-            //   묵찌빠 시작
-            comSecondNum = parseInt(Math.random()*3);
-            switch (comSecondNum) {
-              case 0:
-                comSecondNum = "가위";
-                break;
-              case 1:
-                comSecondNum = "바위";
-
-                break;
-              case 2:
-                comSecondNum = "보";
-
-                break;
-
-              default:
-                break;
-            }
-            result2 = true;
+            alert("컴퓨터가 보를 내서 이기셨습니다! 선공권을 당신이 가져갑니다.");
             whoFirst = "user";
-            while (result2) {
-              userSecondNum = prompt("묵찌빠 입니다. 묵,찌,빠를 입력해주세요!");
-              // 묵찌빠 결과창!
-              switch (userSecondNum) {
-                case "찌":
-                  switch (comSecondNum) {
-                    case "가위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-                case "묵":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "바위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-                case "빠":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "보":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-              }
-            }
-            //  여기까지 묵찌빠
             break;
-
+  
           default:
             break;
         }
         break;
-      // 맨 처음 바위
-      case "바위":
-        switch (com_num) {
+  
+      case "묵":
+        switch (comSecondNum) {
           case "가위":
-            // 선공권 유저 시작
-            alert("컴퓨터가 가위를 냈군요! 승리! 당신이 선공권을 가져갑니다!");
-            //   묵찌빠 시작
-            comSecondNum = parseInt(Math.random()*3);
-            switch (comSecondNum) {
-              case 0:
-                comSecondNum = "가위";
-                break;
-              case 1:
-                comSecondNum = "바위";
-
-                break;
-              case 2:
-                comSecondNum = "보";
-
-                break;
-
-              default:
-                break;
-            }
-            result2 = true;
+            alert(
+              "컴퓨터가 가위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
+            );
             whoFirst = "user";
-            while (result2) {
-              userSecondNum = prompt("묵찌빠 입니다. 묵,찌,빠를 입력해주세요!");
-              // 묵찌빠 결과창!
-              switch (userSecondNum) {
-                case "찌":
-                  switch (comSecondNum) {
-                    case "가위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-                case "묵":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "바위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-
-                case "빠":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "보":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-              }
-            }
-            //  여기까지 묵찌빠
             break;
           case "바위":
-            alert("비겼습니다!");
-
+            if (whoFirst === "com") {
+              firstMoney -= battingMoney * 2;
+              result2 = false;
+              count++;
+              alert(
+                `컴퓨터가 바위를 냈습니다. 패배!${
+                  20 - count
+                }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
+              );
+            } else {
+              firstMoney += battingMoney * 2;
+              result2 = false;
+              count++;
+              alert(
+                `컴퓨터가 바위를 냈습니다. 승리!${
+                  20 - count
+                }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
+              );
+            }
             break;
           case "보":
-            // 선공권 컴퓨터 시작
-            alert("컴퓨터가 보를 냈군요! 패배,컴퓨터가 선공을 가져갑니다");
-
-            //   묵찌빠 시작
-            comSecondNum = parseInt(Math.random()*3);
-            switch (comSecondNum) {
-              case 0:
-                comSecondNum = "가위";
-                break;
-              case 1:
-                comSecondNum = "바위";
-
-                break;
-              case 2:
-                comSecondNum = "보";
-
-                break;
-
-              default:
-                break;
-            }
-            result2 = true;
+            alert("컴퓨터가 보를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다.");
             whoFirst = "com";
-            while (result2) {
-              userSecondNum = prompt("묵찌빠 입니다. 묵,찌,빠를 입력해주세요!");
-              // 묵찌빠 결과창!
-              switch (userSecondNum) {
-                case "찌":
-                  switch (comSecondNum) {
-                    case "가위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-
-                case "묵":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "바위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-
-                case "빠":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "보":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-              }
-            }
-            //  여기까지 묵찌빠
             break;
-
+  
           default:
             break;
         }
-
         break;
-      // 맨 처음 보
-      case "보":
-        switch (com_num) {
+  
+      case "빠":
+        switch (comSecondNum) {
           case "가위":
-            // 선공권 컴퓨터 시작
-            alert("컴퓨터가 가위를 냈군요! 패배,컴퓨터가 선공을 가져갑니다");
-
-            //   묵찌빠 시작
-            comSecondNum = parseInt(Math.random()*3);
-            switch (comSecondNum) {
-              case 0:
-                comSecondNum = "가위";
-                break;
-              case 1:
-                comSecondNum = "바위";
-
-                break;
-              case 2:
-                comSecondNum = "보";
-
-                break;
-
-              default:
-                break;
-            }
-            result2 = true;
+            alert("컴퓨터가 가위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다.");
             whoFirst = "com";
-            while (result2) {
-              userSecondNum = prompt("묵찌빠 입니다. 묵,찌,빠를 입력해주세요!");
-              // 묵찌빠 결과창!
-              switch (userSecondNum) {
-                case "찌":
-                  switch (comSecondNum) {
-                    case "가위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-
-                case "묵":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "바위":
-                      if (whoFirst === "com") {
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                      } else {
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                      }
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-
-                case "빠":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "보":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-              }
-            }
-            //  여기까지 묵찌빠
             break;
           case "바위":
-            alert("컴퓨터가 가위를 냈군요! 승리! 당신이 선공권을 가져갑니다!");
-
-            // 선공권 유저 시작
-            //   묵찌빠 시작
-            comSecondNum = parseInt(Math.random()*3);
-            switch (comSecondNum) {
-              case 0:
-                comSecondNum = "가위";
-                break;
-              case 1:
-                comSecondNum = "바위";
-
-                break;
-              case 2:
-                comSecondNum = "보";
-
-                break;
-
-              default:
-                break;
-            }
-            result2 = true;
+            alert(
+              "컴퓨터가 바위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
+            );
             whoFirst = "user";
-            while (result2) {
-              userSecondNum = prompt("묵찌빠 입니다. 묵,찌,빠를 입력해주세요!");
-              // 묵찌빠 결과창!
-              switch (userSecondNum) {
-                case "찌":
-                  switch (comSecondNum) {
-                    case "가위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 가위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-
-                case "묵":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "바위":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 바위를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-                      break;
-                    case "보":
-                      alert(
-                        "컴퓨터가 보를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-
-                case "빠":
-                  switch (comSecondNum) {
-                    case "가위":
-                      alert(
-                        "컴퓨터가 가위를 내서 졌습니다. 선공권을 컴퓨터가 가져갑니다."
-                      );
-                      whoFirst = "com";
-                      break;
-                    case "바위":
-                      alert(
-                        "컴퓨터가 바위를 내서 이기셨습니다! 선공권을 당신이 가져갑니다."
-                      );
-                      whoFirst = "user";
-                      break;
-                    case "보":
-                      if (whoFirst === "com") {
-                        firstMoney -= battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 패배!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      } else {
-                        firstMoney += battingMoney * 2;
-                        result2 = false;
-                        count++;
-                        alert(
-                          `컴퓨터가 보를 냈습니다. 승리!${
-                            20 - count
-                          }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
-                        );
-                      }
-
-                      break;
-
-                    default:
-                      break;
-                  }
-                  break;
-              }
-            }
-            //  여기까지 묵찌빠
             break;
           case "보":
-            alert("비겼습니다!");
-
+            if (whoFirst === "com") {
+              firstMoney -= battingMoney * 2;
+              result2 = false;
+              count++;
+              alert(
+                `컴퓨터가 보를 냈습니다. 패배!${
+                  20 - count
+                }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
+              );
+            } else {
+              firstMoney += battingMoney * 2;
+              result2 = false;
+              count++;
+              alert(
+                `컴퓨터가 보를 냈습니다. 승리!${
+                  20 - count
+                }판에 ${firstMoney}남았습니다!(도박중독은 인생을 파멸로 이끕니다.) `
+              );
+            }
+  
             break;
-
+  
           default:
             break;
         }
-
-        break;
-
-      default:
-        alert("가위,바위,보 중 하나를 정확하게 입력해 주세요!");
-
         break;
     }
   }
 }
+
+//   묵찌빠 시작
