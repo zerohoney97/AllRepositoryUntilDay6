@@ -350,6 +350,17 @@ while (count <= 20 && firstMoney !== 0) {
   }
   
   while (result2) {
+  }
+}
+
+//   묵찌빠 시작
+
+
+// 묵찌빠 함수
+
+const mukJjiBba=(com,user)=>{
+
+
     userSecondNum = prompt("묵찌빠 입니다. 묵,찌,빠를 입력해주세요!");
     // 묵찌빠 결과창!
     switch (userSecondNum) {
@@ -469,7 +480,5 @@ while (count <= 20 && firstMoney !== 0) {
         }
         break;
     }
-  }
-}
 
-//   묵찌빠 시작
+}
