@@ -88,7 +88,7 @@ let return3 = arr.find((a) => {
   // i 매개변수에
   // return 값이 true의 값이 반환되면 해당 아이템을 반환해준다.
   return a === "딸기";
-});
+}); 
 // true가 나온 첫번째 값을 반환한다.
 // 값을 내보내면 함수가 종료된다.
 console.log(return3);

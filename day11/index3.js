@@ -32,7 +32,6 @@ const result = (lottoNum, userLottoNum) => {
     }
   });
   console.log(`6개중에 ${count}만큼 맞췄습니다. 그냥 일해서 돈 벌자`);
-
 };
 
 // 로또 추첨 실행함수
@@ -63,7 +62,7 @@ function lottoPlay() {
     res.push(number);
   }
   console.log("로또의 결과는?" + res);
-  result(res,userLottoNum);
+  result(res, userLottoNum);
 }
 
 const userLotto = () => {
@@ -78,7 +77,6 @@ const userLotto = () => {
   }
   console.log(`당신이 뽑은 숫자는${userLottoNum}입니다!`);
 };
-
 
 function main() {
   lottoInit();
@@ -96,6 +94,13 @@ function main() {
   // 해당 기능이 동작할 수 있게 재사용성을 높힐 수 있다.
 }
 
-let fruits=['apple','banana','cherry'];
-console.log()
 // 이렇게 단위 통합으로 작업을 정리해두는 습관을 길러야한다.
+
+let a = [1, 2, 3, 4];
+
+console.log(
+  a.reduce((total, num) => {
+    console.log(total);
+    return total - num;
+  })
+);
