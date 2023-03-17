@@ -331,9 +331,10 @@ c.getAge(20);
 // function call 메모
 function tempFunc(params) {
   this.age = 20;
-  console.log((this.age));
+  console.log(this.age);
   console.log(params);
 }
 const context = this;
 
 tempFunc.call(context, 3);
+

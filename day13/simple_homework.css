@@ -1,0 +1,14 @@
+
+.container{
+    width: 50%;
+    margin: auto;
+}
+
+.input-area{
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 50%;
+}
