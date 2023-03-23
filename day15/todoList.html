@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-container {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .input-container {
+        width: 10%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      #_div {
+        margin: auto;
+        width: 41%;
+      }
+      button {
+        margin-top: 40px;
+      }
+      .todo-list {
+      }
+      li {
+        width: 800px;
+        height: 80px;
+      }
+
+      li > div {
+        width: 150px;
+        height: 80px;
+        border: 1px solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="input-container">
+          <label for="">이름</label>
+          <input type="text" />
+          <label for="">해야 할 일</label>
+          <textarea type="" class="todo"></textarea>
+  
+          <label for="">언제?</label>
+          <input type="time" />
+  
+          <button id="addBtn">추가</button>
+        </div>
+        <div id="_div"></div>
+      </div>
+</body>
+<script src="./todoList.js"></script>
+</html>
