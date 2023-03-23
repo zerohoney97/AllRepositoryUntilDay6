@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main-container {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      .input-container {
+        width: 10%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      #_div {
+        margin: auto;
+        width: 41%;
+      }
+      button {
+        margin-top: 40px;
+      }
+      .todo-list {
+      }
+      li {
+        width: 800px;
+        height: 80px;
+      }
+
+      li > div {
+        width: 150px;
+        height: 80px;
+        border: 1px solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="input-container">
+        <label for="">이름</label>
+        <input type="text" />
+        <label for="">해야 할 일</label>
+        <textarea type="" class="todo"></textarea>
+
+        <label for="">언제?</label>
+        <input type="time" />
+
+        <button id="addBtn">추가</button>
+      </div>
+      <div id="_div"></div>
+    </div>
+  </body>
+  <script>
+    // JSON 문자열을 다뤄보자
+    // 객체처럼 생겼음 문자열
+    // 데이터를 문자열로 받아서
+    // 객체로 변환해서 사용하기 위해
+    let _json = '{"key" : "value"}';
+    console.log(_json);
+    // JSON객체 안의 parse메소드가 객체로 객체형태의 문자열을 파싱해준다.
+    // 객체로 변환해준다.
+    console.log(JSON.parse(_json));
+    let obj = { key: 24 };
+    // 객체를 문자열로 변환
+    // stringify : 객체를 문자열로 변환
+    console.log(ㄴ);
+
+    function addList() {
+      let name = document.querySelectorAll("input")[0].value;
+      let todoContent = document.querySelector("textarea").value;
+      let time = document.querySelectorAll("input")[1].value;
+      let value = window.localStorage.getItem("게시판");
+      // window.localStorage.clear();
+      if (window.localStorage.length == 0) {
+        window.localStorage.setItem(
+          "게시판",
+          `{"name":"${name}","todoContent":"${todoContent}","time":"${time}"}`
+        );
+      } else {
+        window.localStorage.setItem(
+          "게시판",
+          value +
+            "|" +
+            `{"name":"${name}","todoContent":"${todoContent}","time":"${time}"}`
+        );
+      }
+      console.log(window.localStorage.getItem("게시판"));
+      // 문자열을 객체로 변환
+      // let _json = JSON.parse(window.localStorage.getItem("게시판"));
+      // console.log(_json);
+      render();
+    }
+
+    function render() {
+      let _json = window.localStorage.getItem("게시판");
+      // 문자열에서 "|" 문자열마다 잘라서 배열로 변경
+      _json = _json.split("|");
+      console.log(_json);
+      _div.innerHTML = "";
+      let _ul = document.createElement("ul");
+      let _li = document.createElement("li");
+      let _div1 = document.createElement("div");
+      let _div2 = document.createElement("div");
+      let _div3 = document.createElement("div");
+      _div1.innerHTML = "이름";
+      _div2.innerHTML = "할일";
+      _div3.innerHTML = "언제?";
+      _li.style.display = "flex";
+      _li.append(_div1, _div2, _div3);
+      _ul.append(_li);
+      _json.forEach(function (i) {
+        let _li = document.createElement("li");
+        let _div1 = document.createElement("div");
+        let _div2 = document.createElement("div");
+        let _div3 = document.createElement("div");
+        _div1.innerHTML = JSON.parse(i).name;
+        _div2.innerHTML = JSON.parse(i).todoContent;
+        _div3.innerHTML = JSON.parse(i).time;
+        _li.style.display = "flex";
+        _li.append(_div1, _div2, _div3);
+        _ul.append(_li);
+      });
+      _div.append(_ul);
+    }
+
+    addBtn.addEventListener("click", addList);
+  </script>
+</html>
