@@ -61,3 +61,7 @@ console.log(window.localStorage.length);
 
 // 로컬 스토리지 키값 호출
 window.localStorage.key(0)
+
+let asd='\wew안녕';
+var newStr = asd.replace(/\\/g, "");
+console.log(newStr);

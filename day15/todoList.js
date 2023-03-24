@@ -1,10 +1,14 @@
 // window.localStorage.clear();
 let count = 0;
+
+
 const addLocalStorage = () => {
   let name = document.querySelectorAll("input")[0].value;
   let todo = document.querySelector("textarea").value;
   let time = document.querySelectorAll("input")[1].value;
-
+  name = name.replace(/\\/g, "");
+  todo = todo.replace(/\\/g, "");
+  time = time.replace(/\\/g, "");
   if (localStorage.length == 0) {
     count++;
     this.localStorage.setItem(
@@ -46,6 +50,7 @@ const render = () => {
     let div1 = document.createElement("div");
     let div2 = document.createElement("div");
     let div3 = document.createElement("div");
+    //   \는 json에서 ""로 표현된다. 금지! 메모
     div1.innerHTML = JSON.parse(a).name;
     div2.innerHTML = JSON.parse(a).todo;
     div3.innerHTML = JSON.parse(a).time;
@@ -57,10 +62,14 @@ const render = () => {
       let newBoardArray = boardArray.filter((a) => {
         return JSON.parse(a).ID !== _ul.id;
       });
+      boardArray = newBoardArray;
       console.log(newBoardArray);
       window.localStorage.clear();
       _ul.remove();
-      localStorage.setItem("board", newBoardArray.join("/"));
+      let tempArray = newBoardArray.join("/");
+      tempArray.shift();
+      localStorage.setItem("board", tempArray);
+      localStorage.getItem("board");
     });
     _div.append(_ul);
     _ul.add;

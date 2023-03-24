@@ -45,7 +45,7 @@ function createCookie(name, value, time) {
   document.cookie =
     name + "=" + value + ";expires" + date.toUTCString() + "path=/";
 }
-//   createCookie("팝업","true","");
+  createCookie("팝업","true","");
 // createCookie("팝업","두번째 쿠키","");
 // console.log(document.cookie);
 // [세션] : 브라우저가 동작되는 동안에 남아있는 데이터

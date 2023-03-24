@@ -82,7 +82,10 @@
       let time = document.querySelectorAll("input")[1].value;
       let value = window.localStorage.getItem("게시판");
       // window.localStorage.clear();
-      if (window.localStorage.length == 0) {
+      if (
+        window.localStorage.length == 0 ||
+        window.localStorage.getItem("게시판") == ""
+      ) {
         window.localStorage.setItem(
           "게시판",
           `{"name":"${name}","todoContent":"${todoContent}","time":"${time}"}`
@@ -99,7 +102,7 @@
       // 문자열을 객체로 변환
       // let _json = JSON.parse(window.localStorage.getItem("게시판"));
       // console.log(_json);
-      render();
+      // render();
     }
 
     function render() {
@@ -113,27 +116,59 @@
       let _div1 = document.createElement("div");
       let _div2 = document.createElement("div");
       let _div3 = document.createElement("div");
+      let _div4 = document.createElement("div");
       _div1.innerHTML = "이름";
       _div2.innerHTML = "할일";
       _div3.innerHTML = "언제?";
+      _div4.innerHTML = "삭제";
       _li.style.display = "flex";
-      _li.append(_div1, _div2, _div3);
+      _li.append(_div1, _div2, _div3, _div4);
       _ul.append(_li);
-      _json.forEach(function (i) {
+      // 다 지웠으면 배열에 "" 빈문자열 하나가 0번 인덱스에 있어서
+      // 0번 인덱스가 빈문자열이면 return
+      if (_json[0] == "") {
+        return;
+      }
+      _json.forEach(function (i, index) {
         let _li = document.createElement("li");
         let _div1 = document.createElement("div");
         let _div2 = document.createElement("div");
         let _div3 = document.createElement("div");
+        let _div4 = document.createElement("div");
+        let _button = document.createElement("button");
+        _button.innerHTML = "삭제";
         _div1.innerHTML = JSON.parse(i).name;
         _div2.innerHTML = JSON.parse(i).todoContent;
         _div3.innerHTML = JSON.parse(i).time;
+        _div4.append(_button);
+        _button.onclick = function () {
+          // splice 첫번째 매개변수가 인덱스
+          // 두번째 매개변수가 제거할 갯수
+          _json.splice(index, 1);
+          //  | 문자로 나눴는데 배열을 문자열로 바꾸면서
+          // 인덱스마다 구분하는 문자를 정해 줄 수 있는 메소드
+          console.log(_json.join("|"));
+          window.localStorage.setItem("게시판", _json.join("|"));
+        };
         _li.style.display = "flex";
-        _li.append(_div1, _div2, _div3);
+        _li.append(_div1, _div2, _div3, _div4);
         _ul.append(_li);
       });
+      if (
+        window.localStorage.length !== 0 &&
+        window.localㄱㄷStorage.getItem("게시판") !== ""
+      ) {
+        render();
+      }
       _div.append(_ul);
     }
 
     addBtn.addEventListener("click", addList);
+    if (
+      window.localStorage.length !== 0 &&
+      window.localStorage.getItem("게시판") !== ""
+    ) {
+      render();
+    }
   </script>
 </html>
