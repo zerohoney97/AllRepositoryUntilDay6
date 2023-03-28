@@ -1,0 +1,78 @@
+<!-- 묵찌빠 추가,배팅금액,컴퓨터 player 돈, 컴=>2000~3000원 사이 배팅 플레이어는 이와 동일하게 배팅, 지는 사람이 배팅금액의 2~3배의 금액
+컴,플레이어 모두 생성자 함수로 객체로 만들자,(초기 자금은 난이도 버튼으로 쉬움 100000 어려움 50000, 매우어려움 10000) 모든 돈 소모, 컴터 파산하면 종료-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가위바위보</title>
+    <style>
+      .container{
+        width: 700px;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .player-select,
+      .com-select {
+        width: 180px;
+        height: 154px;
+        background-image: url("./game.png");
+        background-repeat: no-repeat;
+        border: 1px solid;
+        background-size: 440px;
+        background-position-x: 25px;
+      }
+      .player-select-btns{
+        display: flex;
+      }
+      .rock {
+        background-position-x: 25px;
+      }
+      .paper {
+        background-position-x: -265px;
+      }
+      .scissor {
+        background-position-x: -120px;
+      }
+      .game-wrap {
+        display: flex;
+      }
+
+      .difficultySelect {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="difficultySelect"></div>
+      <!--버튼 가위 바위 보 -->
+      <div class="game-wrap">
+        <!--player 선택한 이미지 -->
+        <div class="player-select">당신</div>
+        <div class="com-select">컴퓨터</div>
+      </div>
+      <div class="what-game"></div>
+      <div class="what-difficulty">
+        <button class="difficulty-btn">쉬움</button>
+        <button class="difficulty-btn">보통</button>
+        <button class="difficulty-btn">어려움</button>
+      </div>
+      <h2 class="difficulty-text"></h2>
+      <h1 class="result">결과</h1>
+      <p class="subResult">내용</p>
+      <div class="whoAttack"></div>
+      <h2 class="goNextGameText"></h2>
+      <div class="player-select-btns">
+      <button class="player-btn">가위</button>
+      <button class="player-btn">보</button>
+      <button class="player-btn">바위</button></div>
+      <h1 class="result"></h1>
+    </div>
+  </body>
+  <script src="./index4.js"></script>
+</html>
