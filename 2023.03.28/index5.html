@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>페페 변신시키기</title>
+    <style>
+      .pepe {
+        width: 300px;
+        height: 300px;
+        background-image: url("./따봉.jpeg");
+        background-size: contain;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+
+      .change-box {
+        width: 300px;
+        height: 300px;
+        border: 2px solid silver;
+        background-color: gray;
+        border-radius: 20%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        color: white;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pepe" draggable="true"></div>
+
+    <div class="change-box">페페 변신 시키기</div>
+  </body>
+  <script src="./index5.js"></script>
+</html>

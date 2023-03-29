@@ -7,14 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>가위바위보</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
     <style>
-      .container{
+      .container {
         width: 700px;
-        height: 100%;
+        height: 500px;
         margin: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
       .player-select,
       .com-select {
@@ -26,7 +36,7 @@
         background-size: 440px;
         background-position-x: 25px;
       }
-      .player-select-btns{
+      .player-select-btns {
         display: flex;
       }
       .rock {
@@ -41,9 +51,25 @@
       .game-wrap {
         display: flex;
       }
-
+      .what-difficulty {
+        margin: 30px;
+      }
       .difficultySelect {
         display: flex;
+      }
+      .player-select-btns {
+        width: 300px;
+        height: 30px;
+        justify-content: space-between;
+      }
+      .player-btn {
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .contents-container {
+        min-width: 300px;
       }
     </style>
   </head>
@@ -58,21 +84,33 @@
       </div>
       <div class="what-game"></div>
       <div class="what-difficulty">
-        <button class="difficulty-btn">쉬움</button>
-        <button class="difficulty-btn">보통</button>
-        <button class="difficulty-btn">어려움</button>
+        <button class="btn btn-outline-primary difficulty-btn">쉬움</button>
+        <button class="btn btn-outline-warning difficulty-btn">보통</button>
+        <button class="btn btn-outline-danger difficulty-btn">어려움</button>
       </div>
-      <h2 class="difficulty-text"></h2>
-      <h1 class="result">결과</h1>
-      <p class="subResult">내용</p>
+      <div class="alert alert-success contents-container" role="alert">
+        <h4 style="text-align: center" class="alert-heading difficulty-text">
+          난이도
+        </h4>
+        <p style="text-align: center" class="result">결과</p>
+        <hr />
+        <p style="text-align: center" class="subResult mb-0">내용</p>
+      </div>
       <div class="whoAttack"></div>
       <h2 class="goNextGameText"></h2>
       <div class="player-select-btns">
-      <button class="player-btn">가위</button>
-      <button class="player-btn">보</button>
-      <button class="player-btn">바위</button></div>
+        <button type="button" class="btn btn-primary player-btn">가위</button>
+        <button type="button" class="btn btn-primary player-btn">바위</button>
+        <button type="button" class="btn btn-primary player-btn">보</button>
+      </div>
       <h1 class="result"></h1>
+      <div class="cutomized-alert"></div>
     </div>
   </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"
+  ></script>
   <script src="./index4.js"></script>
 </html>
