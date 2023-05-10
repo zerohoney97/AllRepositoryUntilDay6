@@ -1,0 +1,37 @@
+.table {
+  width: 600px;
+  height: 500px;
+  border: 1px solid rgb(219, 219, 219);
+  margin: auto;
+}
+
+.table-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  left: -35px;
+}
+.table-head li {
+  width: 70px;
+  height: 20px;
+  list-style: none;
+  text-align: center;
+}
+
+.table-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  left: -35px;
+}
+
+.table-row li {
+  width: 70px;
+  height: 20px;
+  list-style: none;
+  text-align: center;
+}

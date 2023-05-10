@@ -5,16 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/signIn.css" />
   </head>
   <body>
-    <h1>로그인</h1>
-    <form method="post">
-      <label for="">email</label>
-      <input type="text" name="email" />
-      <label for="">password</label>
-      <input type="password" name="password" />
-      <button type="submit">로그인</button>
-    </form>
-    <a href="/signUp">회원가입</a>
+    <div class="signIn-container">
+      <div class="input-container">
+        <form method="post">
+          <div class="email-container">
+            <label for="">email</label>
+            <input type="text" name="email" id="email" />
+          </div>
+          <div class="paswword-container">
+            <label for="">password</label>
+            <input type="password" name="password" id="password" />
+          </div>
+          <button type="submit" id="submit">로그인</button>
+        </form>
+      </div>
+      <a href="/signUp">회원가입</a>
+    </div>
   </body>
+
+  <script></script>
 </html>

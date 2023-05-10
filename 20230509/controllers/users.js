@@ -8,8 +8,8 @@ const controllUsers = {
 
       const temp = await primitiveUserFun.signIn(email, password);
       // 회원이 있다면 true,없다면 false반환
-      if (temp) {
-        return true;
+      if (temp[0]) {
+        return [true, temp[1]];
       } else {
         // 존재하지 않는 회원일 때,아이디,비번이 잘 못 됐을 때
         throw new Error("존재하지 않는 회원입니다!");
@@ -21,7 +21,7 @@ const controllUsers = {
       } else {
         console.log("컨트롤러에서 로그인 오류 발생", error);
       }
-      return false;
+      return [false, {}];
     }
   },
   SignUp: async (req, res) => {
@@ -31,7 +31,6 @@ const controllUsers = {
       if (email == "" || password == "" || nickName == "") {
         throw new Error("none");
       } else {
-
         if (await primitiveUserFun.validatedUser(email)) {
           await primitiveUserFun.signUp(email, password, nickName);
           // 회원가입 성공이므로 true
@@ -52,6 +51,16 @@ const controllUsers = {
       }
       return false;
     }
+  },
+  // 현재 로그인한 유저 가져오기
+  GetNowLogin: async (req, res) => {
+    const data = await primitiveUserFun.getNowLogin();
+    return data;
+  },
+  // 특정 유저 가져오기
+  GetUser: async (userId) => {
+    const data = await primitiveUserFun.getUser(userId);
+    return data;
   },
 };
 

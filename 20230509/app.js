@@ -4,6 +4,10 @@ const path = require("path");
 const { signInrouter } = require("./router/signIn");
 // 회원가입 라우터
 const { signUprouter } = require("./router/signUp");
+//게시판 라우터
+const { boarRouter } = require("./router/board");
+
+const nowLogin = {};
 
 const app = e();
 
@@ -21,12 +25,14 @@ app.use(e.static(path.join(__dirname, "public")));
 
 app.use("/signIn", signInrouter);
 app.use("/signUp", signUprouter);
+app.use("/board", boarRouter);
 
 app.listen(8080, () => {
   console.log("성공했구나 이녀석...");
 });
 app.get("/", (req, res) => {
-  res.render("main");
+  const data=req.query.id;
+  res.render("main",{data:data});
 });
 
 // primitiveUserFun.init();

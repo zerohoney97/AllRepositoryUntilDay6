@@ -5,18 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/signUp.css">
+    <link rel="stylesheet" href="/signUp.css" />
   </head>
   <body>
-    <h1>회원가입</h1>
-    <form method="post">
-      <label for="">이메일</label>
-      <input type="text" name="email" />
-      <label for="">비밀번호</label>
-      <input type="password" name="password" />
-      <label for="">닉네임</label>
-      <input type="text" name="nickName" />
-      <button type="submit">회원가입 하기</button>
-    </form>
+    <div class="signUp-container">
+      <div class="input-container">
+        <form method="post">
+          <div class="email-container">
+            <label for="">이메일</label>
+            <input type="text" name="email" />
+          </div>
+          <div class="paswword-container">
+            <label for="">비밀번호</label>
+            <input type="password" name="password" />
+          </div>
+
+          <div class="nickName-container">
+            <label for="">닉네임</label>
+            <input type="text" name="nickName" />
+          </div>
+          <button type="submit">회원가입 하기</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

@@ -7,8 +7,11 @@ signInrouter.get("/", async (req, res) => {
 });
 signInrouter.post("/", async (req, res) => {
   try {
-    if (await controllUsers.Login(req, res)) {
-      res.redirect("/");
+    const temp = await controllUsers.Login(req, res);
+    const user = temp[1];
+    console.log(temp);
+    if (temp[0]) {
+      res.redirect(`/board/?id=${temp[1].id}`);
     } else {
       //로그인 실패화면으로 돌려보내줌
       res.redirect("/signIn/signInFail");
@@ -22,7 +25,6 @@ signInrouter.post("/", async (req, res) => {
 signInrouter.get("/signInFail", (req, res) => {
   //3초 후에 다시 돌리는 건 ejs script안에 있음
   res.render("signInFail");
-  
 });
 
 module.exports = { signInrouter };
