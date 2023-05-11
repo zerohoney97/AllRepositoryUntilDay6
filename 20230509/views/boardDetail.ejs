@@ -29,7 +29,6 @@
         <div><%= data.content%></div>
       </div>
     </div>
-
     <div class="comment-container">
       <% commentData.forEach((el,index)=>{ %>
       <div class="comment">
@@ -39,6 +38,7 @@
 
       <%}) %>
     </div>
+
     <form action="" method="post" class="detail-form" id="detail-form">
       <label for=""></label>
       <input type="text" name="comment" id="" />
@@ -52,7 +52,7 @@
     console.log(temp); // "/some-page"와 같은 문자열 출력
 
     let form = document.querySelectorAll(".detail-form");
-    form[0].action = `/board/comment/${temp[3]}`;
-    form[1].action = `/board/like/${temp[3]}`;
+    form[1].action = `/board/comment/${temp[3]}`;
+    form[0].action = `/board/like/${temp[3]}`;
   </script>
 </html>

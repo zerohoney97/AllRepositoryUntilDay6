@@ -1,7 +1,11 @@
+body {
+  background-color: #b0daff;
+}
+
 .table {
   width: 600px;
   height: 500px;
-  border: 1px solid rgb(219, 219, 219);
+  border: 2px solid #feff86;
   margin: auto;
 }
 
@@ -34,4 +38,5 @@
   height: 20px;
   list-style: none;
   text-align: center;
+  overflow: hidden;
 }

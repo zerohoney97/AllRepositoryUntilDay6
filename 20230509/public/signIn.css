@@ -1,7 +1,13 @@
+body{
+    background-color: #b0daff;
+  
+  }
+  
+
 .signIn-container{
     width: 300px;
     height: 600px;
-    border: 1px solid rgb(219,219,219);
+    border: 1px solid #feff86;
     margin: auto;
 }
 
@@ -26,14 +32,19 @@
 .email-container label{
     display: block;
     font-size: large;
-    color: silver;
+    color:   #feff86;
 }
-.paswword-container label{
+.password-container label{
     display: block;
     font-size: large;
-    color: silver;
+    color:  #feff86;
 }
-
+.email-container input{
+    border: 2px dotted #feff86;
+}
+.password-container input{
+    border: 2px dotted #feff86;
+}
 
 .input-container button{
     width: 150px;

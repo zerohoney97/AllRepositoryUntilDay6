@@ -13,6 +13,7 @@ const controlBoards = {
   Insert: async (req, res) => {
     try {
       const { title, content } = req.body;
+      console.log(title)
       await boardFun.insert(title, content);
     } catch (error) {
       console.log("컨트롤러에 있는 삽입", error);
