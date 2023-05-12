@@ -1,6 +1,4 @@
-body {
-  background-color: #b0daff;
-}
+
 @font-face {
   font-family: "BMEULJIRO";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/BMEULJIRO.woff")
@@ -103,7 +101,7 @@ body {
   background-color: #b0daff;
   border-style: none none solid none; /* top right bottom left */
   border-color: transparent transparent #fff transparent;
-  border-width: 0 0 1px 0;
+  border-width: 0 0 2px 0;
 }
 #detail-form input:focus {
   outline: none;

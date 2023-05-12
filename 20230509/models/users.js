@@ -16,7 +16,6 @@ const primitiveUserFun = {
   // 로그인 로직
   signIn: async (email, password) => {
     try {
-      console.log(email, password, "이메일,패스워드");
       const [[user]] = await mysql.query(
         "SELECT * FROM users WHERE email=? AND password=?",
         [email, password]
@@ -26,7 +25,6 @@ const primitiveUserFun = {
       } else {
         // 현재 로그인한 유저 저장
         const [tempUser] = await mysql.query("SELECT * FROM nowLogin");
-        console.log(tempUser);
         if (tempUser.length<=0) {
           // 비었다면 삽입
           console.log('삽입')

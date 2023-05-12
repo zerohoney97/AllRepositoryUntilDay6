@@ -9,7 +9,6 @@ signInrouter.post("/", async (req, res) => {
   try {
     const temp = await controllUsers.Login(req, res);
     const user = temp[1];
-    console.log(temp);
     if (temp[0]) {
       res.redirect(`/board/?id=${temp[1].id}`);
     } else {

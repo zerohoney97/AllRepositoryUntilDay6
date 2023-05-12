@@ -1,5 +1,6 @@
 const e = require("express");
 const path = require("path");
+
 // 로그인 라우터
 const { signInrouter } = require("./router/signIn");
 // 회원가입 라우터
@@ -31,8 +32,9 @@ app.listen(8080, () => {
   console.log("성공했구나 이녀석...");
 });
 app.get("/", (req, res) => {
-  const data=req.query.id;
-  res.render("main",{data:data});
+  const data = req.query.id;
+  res.render("main", { data: data });
 });
 
-// primitiveUserFun.init();
+
+

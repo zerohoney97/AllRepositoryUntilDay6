@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/boardInsert.css">
+    <link rel="stylesheet" href="/boardInsert.css" />
   </head>
   <body>
     <div class="insert">
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="제목" />
-        <input type="text" name="content" placeholder="내용"/>
+        <input type="text" name="content" placeholder="내용" />
+        <input type="file" name="image" />
         <button type="submit">글 등록하기</button>
       </form>
     </div>

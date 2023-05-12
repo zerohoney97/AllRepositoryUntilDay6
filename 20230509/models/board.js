@@ -13,19 +13,17 @@ const boardFun = {
   },
 
   // 글 추가
-  insert: async (title, content) => {
+  insert: async (title, content,img) => {
     try {
-      
-      const [[{userId}]] = await mysql.query("SELECT * FROM nowLogin");
+      const [[{ userId }]] = await mysql.query("SELECT * FROM nowLogin");
       const [[{ nickName }]] = await mysql.query(
         "SELECT nickName FROM users WHERE id=?",
         [userId]
       );
-      console.log(nickName, "models/board/insert");
 
       await mysql.query(
-        "INSERT INTO board (title,content,userId,nickName) VALUES(?,?,?,?)",
-        [title, content, userId, nickName]
+        "INSERT INTO board (title,content,userId,nickName,img) VALUES(?,?,?,?,?)",
+        [title, content, userId, nickName,img]
       );
     } catch (error) {
       console.log("모델 보드에 삽입", error);
@@ -62,21 +60,73 @@ const boardFun = {
     }
   },
   // 글 좋아요
-  likeBoard: async (tableId) => {
+  likeBoard: async (tableId, nowLogin) => {
     try {
       const [[{ like }]] = await mysql.query("SELECT * FROM board WHERE id=?", [
         tableId,
       ]);
       if (like) {
         // 이미 좋아요가 1개이상일때
-        await mysql.query("UPDATE board SET `like`=? WHERE id=?", [parseInt(like) + 1,tableId]);
+        await mysql.query("UPDATE board SET `like`=? WHERE id=?", [
+          parseInt(like) + 1,
+          tableId,
+        ]);
+        const [[{ likeId }]] = await mysql.query(
+          "SELECT likeId FROM board WHERE id=?",
+          [tableId]
+        );
+        // 좋아요를 누른 유저의 아이디 저장
+        const dataArr = JSON.parse(likeId);
+        dataArr.push(nowLogin);
+        const newDataArr = [...new Set(dataArr)];
+        const jsonNewDataArr = JSON.stringify(newDataArr);
+        await mysql.query("UPDATE board SET likeId=? WHERE id=?", [
+          jsonNewDataArr,
+          tableId,
+        ]);
       } else {
         // 좋아요가 처음일 때
-        await mysql.query("UPDATE board SET `like`=?  WHERE id=?",[1,tableId]);
+        await mysql.query("UPDATE board SET `like`=?  WHERE id=?", [
+          1,
+          tableId,
+        ]);
+        const array = [nowLogin];
+        const inputArrayData = JSON.stringify(array);
+        // 좋아요를 처음 누른 유저를 저장
+        await mysql.query("UPDATE board SET likeId=? WHERE id=?", [
+          inputArrayData,
+          tableId,
+        ]);
       }
+      // 좋아요 누른 유저의 아이디 저장
     } catch (error) {
       console.log("모델의 보드의 좋아요", error);
     }
+  },
+  //좋아요 누른 유저 아이디 가져오기
+  getLikeUserId: async (tableId) => {
+    try {
+      const [[{ likeId }]] = await mysql.query(
+        "SELECT likeId FROM board WHERE id=?",
+        [tableId]
+      );
+      const data = JSON.parse(likeId);
+      return data;
+    } catch (error) {
+      console.log("모델의 보드의 좋아요가져오는 함수", error);
+    }
+  },
+  // 이미지 업로드
+  uploadImg: async (id, img) => {
+    try {
+      const boardId=mysql.query('SELECT id ')
+      const sql = "INSERT INTO image(image,boardId) VALUES(?,?)";
+      await mysql.query(sql, [img, id], (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    } catch (error) {}
   },
 };
 

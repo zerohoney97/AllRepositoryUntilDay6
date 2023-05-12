@@ -1,5 +1,7 @@
 const { boardFun } = require("../models/board");
-// 현재 로그인한 유저
+const { controllUsers } = require("../controllers/users");
+
+
 const controlBoards = {
   ViewAllBoard: async (req, res) => {
     try {
@@ -13,8 +15,8 @@ const controlBoards = {
   Insert: async (req, res) => {
     try {
       const { title, content } = req.body;
-      console.log(title)
-      await boardFun.insert(title, content);
+      const img = `/images/${req.file.filename}`;
+      await boardFun.insert(title, content,img);
     } catch (error) {
       console.log("컨트롤러에 있는 삽입", error);
     }
@@ -46,15 +48,35 @@ const controlBoards = {
     }
   },
   // 좋아요
-  LikeBoard:async (req,res)=>{
+  LikeBoard: async (req, res) => {
     try {
-      const {id}=req.params
-      await boardFun.likeBoard(id);
+      const { id } = req.params;
+      const nowLogin = await controllUsers.GetNowLogin(req, res);
+      await boardFun.likeBoard(id, nowLogin);
     } catch (error) {
       console.log("컨트롤러 보드 좋아요", error);
-      
     }
-  }
+  },
+  // 좋아요를 누른 유저의 아이디 가져옴
+  GetLikeUserId: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const data = await boardFun.getLikeUserId(id);
+      return data;
+    } catch (error) {
+      console.log("컨트롤러 보드 좋아요", error);
+    }
+  },
+  UploadImg: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const img = `/images/${req.file.filename}`;
+      
+      await boardFun.uploadImg(id, img);
+    } catch (error) {
+      console.log("컨트롤러의 보드", error);
+    }
+  },
 };
 
 module.exports = { controlBoards };

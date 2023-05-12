@@ -17,7 +17,7 @@
       <h2>내용</h2>
       <div class="like-container">
         <form action="" method="post" class="detail-form" id="detail-form2">
-          <button type="submit">좋아요!</button>
+          <button type="submit" class="like-btn">좋아요!</button>
         </form>
         <div class="like-container2">
           <span>좋아요수</span>
@@ -26,6 +26,7 @@
       </div>
 
       <div class="content">
+        <img src="<%= data.img %>" alt="" />
         <div><%= data.content%></div>
       </div>
     </div>
@@ -44,12 +45,27 @@
       <input type="text" name="comment" id="" />
       <button type="submit">댓글 달기</button>
     </form>
-   
   </body>
   <script>
     const currentPath = window.location.pathname;
+
+    // action을 다르게 주기 위한 ,:id를 가져오기 위한 split
     const temp = currentPath.split("/");
-    console.log(temp); // "/some-page"와 같은 문자열 출력
+    // 좋아요를 누른 id를 담은 배열
+    const likeIdArray = "<%=likeIdarray %>";
+    // 현재 로그인한 유저
+    const userId = "<%=userId %>";
+    const dataArr = likeIdArray.split(",");
+    const btn = document.querySelector(".like-btn");
+
+    console.log(dataArr); // "/some-page"와 같은 문자열 출력
+    console.log(userId);
+
+    if (dataArr.includes(userId)) {
+      btn.style.backgroundColor = "gray";
+      btn.style.cursor = "default";
+      btn.disabled = true;
+    }
 
     let form = document.querySelectorAll(".detail-form");
     form[1].action = `/board/comment/${temp[3]}`;
