@@ -6,6 +6,9 @@ const { mysql } = require("../models/connetToMysql");
 const { controllUsers } = require("../controllers/users");
 const { controlBoards } = require("../controllers/board");
 const { controlComments } = require("../controllers/comment");
+const dot = require("dotenv").config();
+const jwt = require("jsonwebtoken");
+
 // 이미지 보관의 경로와 이름
 var stoage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -19,6 +22,16 @@ var stoage = multer.diskStorage({
 var upload = multer({ storage: stoage });
 boarRouter.get("/", async (req, res) => {
   const data = await controlBoards.ViewAllBoard();
+  let token = req.session.token;
+  let KEY = process.env.KEY;
+  jwt.verify(token, KEY, (err, decoded) => {
+    if (err) {
+      console.log("보드 라우터에 get", err);
+    } else {
+      console.log(decoded);
+    }
+  });
+
   res.render("board", { data: data });
 });
 

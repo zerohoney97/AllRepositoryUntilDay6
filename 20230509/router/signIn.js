@@ -1,6 +1,9 @@
 const e = require("express");
 const signInrouter = e.Router();
 const { controllUsers } = require("../controllers/users");
+const dot = require("dotenv").config();
+
+const jwt = require("jsonwebtoken");
 
 signInrouter.get("/", async (req, res) => {
   res.render("signIn");
@@ -10,7 +13,27 @@ signInrouter.post("/", async (req, res) => {
     const temp = await controllUsers.Login(req, res);
     const user = temp[1];
     if (temp[0]) {
-      res.redirect(`/board/?id=${temp[1].id}`);
+      const KEY = process.env.KEY;
+      let token = jwt.sign(
+        {
+          type: "JWT",
+          name: temp[1].id,
+        },
+        KEY,
+        {
+          expiresIn: "5m",
+          issuer: "owner",
+        }
+      );
+      req.session.regenerate((err) => {
+        if (err) {
+          // 세션 재설정 실패 처리
+          res.status(500).send("세션 재설정에 실패했습니다.");
+        } else {
+          req.session.token = token;
+          res.redirect(`/board/?id=${temp[1].id}`);
+        }
+      });
     } else {
       //로그인 실패화면으로 돌려보내줌
       res.redirect("/signIn/signInFail");
