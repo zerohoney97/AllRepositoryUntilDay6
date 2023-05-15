@@ -17,7 +17,7 @@ const app = e();
 // mysql12연결
 const mysql = mysql2.createConnection({
   // password가 database 아래에 있으면 오류뜸
-  user: "root",
+  user:'root',
   password: "q1w2e3R$",
   database: "test2",
   // 다중 쿼리문 사용할 수 있는 옵션
