@@ -17,8 +17,8 @@ const primitiveUserFun = {
   signIn: async (email, password) => {
     try {
       const [[user]] = await mysql.query(
-        "SELECT * FROM users WHERE email=? AND password=?",
-        [email, password]
+        "SELECT * FROM users WHERE email=? ",
+        [email]
       );
       if (user == undefined) {
         return [false, {}];

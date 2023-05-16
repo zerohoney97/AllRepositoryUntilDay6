@@ -1,4 +1,30 @@
 const { primitiveUserFun } = require("../models/users");
+const bcrypt = require("bcrypt");
+
+// 암호화 모듈
+const createHash = (userPassword) => {
+  return new Promise((res, rej) => {
+    bcrypt.hash(userPassword, 10, (err, data) => {
+      if (err) {
+        console.log("해시과정중 오류", err);
+        rej(err);
+      } else {
+        res(data);
+      }
+    });
+  });
+};
+
+const comparePw = (userPassword, hash) => {
+  return new Promise((res, rej) => {
+    bcrypt.compare(userPassword, hash, (err, same) => {
+      if (err) {
+        rej(err);
+      }
+      res(same);
+    });
+  });
+};
 
 const controllUsers = {
   // 로그인
@@ -7,8 +33,13 @@ const controllUsers = {
       const { email, password } = req.body;
 
       const temp = await primitiveUserFun.signIn(email, password);
+      // 해시함수 비교
+      const same = await comparePw(password, temp[1].password);
+      if (!same) {
+        throw new Error("비밀번호가 잘 못 됐습니다!");
+      }
       // 회원이 있다면 true,없다면 false반환
-      if (temp[0]) {
+      if (temp[0] && same) {
         return [true, temp[1]];
       } else {
         // 존재하지 않는 회원일 때,아이디,비번이 잘 못 됐을 때
@@ -18,6 +49,9 @@ const controllUsers = {
       // 존재하지 않는 회원일 때,아이디,비번이 잘 못 됐을 때
       if (error.message == "존재하지 않는 회원입니다!") {
         console.log("아이디 혹은 비밀번호가 잘못 됐습니다");
+      } else if (error.message == "비밀번호가 잘 못 됐습니다!") {
+        console.log("비밀번호가 잘 못 됐습니다! ");
+        res.send("비밀번호가 잘 못 됐습니다! ");
       } else {
         console.log("컨트롤러에서 로그인 오류 발생", error);
       }
@@ -32,7 +66,10 @@ const controllUsers = {
         throw new Error("none");
       } else {
         if (await primitiveUserFun.validatedUser(email)) {
-          await primitiveUserFun.signUp(email, password, nickName);
+          // 해시화 시킨 비밀번호 넣기
+          const hash = await createHash(password);
+          console.log(hash, "해쉬");
+          await primitiveUserFun.signUp(email, hash, nickName);
           // 회원가입 성공이므로 true
           return true;
         } else {
