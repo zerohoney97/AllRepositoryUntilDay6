@@ -21,16 +21,30 @@ signInrouter.post("/", async (req, res) => {
         },
         KEY,
         {
-          expiresIn: "5m",
+          expiresIn: "10s",
           issuer: "owner",
         }
       );
+
+      let refreshToken = jwt.sign(
+        {
+          type: "JWT",
+          name: temp[1].id,
+        },
+        KEY,
+        {
+          expiresIn: "30m",
+          issuer: "owner",
+        }
+      );
+
       req.session.regenerate((err) => {
         if (err) {
           // 세션 재설정 실패 처리
           res.status(500).send("세션 재설정에 실패했습니다.");
         } else {
           req.session.token = token;
+          req.session.refreshToken = refreshToken;
           res.redirect(`/board/?id=${temp[1].id}`);
         }
       });

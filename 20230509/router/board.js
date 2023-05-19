@@ -6,6 +6,7 @@ const { mysql } = require("../models/connetToMysql");
 const { controllUsers } = require("../controllers/users");
 const { controlBoards } = require("../controllers/board");
 const { controlComments } = require("../controllers/comment");
+const { token } = require("./signIn");
 const dot = require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
@@ -23,16 +24,37 @@ var upload = multer({ storage: stoage });
 boarRouter.get("/", async (req, res) => {
   const data = await controlBoards.ViewAllBoard();
   let token = req.session.token;
+  let refreshToken = req.session.refreshToken;
   let KEY = process.env.KEY;
   jwt.verify(token, KEY, (err, decoded) => {
     if (err) {
-      console.log("보드 라우터에 get", err);
+      jwt.verify(refreshToken, KEY, (err, decoded) => {
+        if (err) {
+          console.log("refresh tojen is expired");
+          res.send("다시 로그인 해 주세요");
+        } else {
+          let newToken = jwt.sign(
+            {
+              type: "JWT",
+              name: token.name,
+            },
+            KEY,
+            {
+              expiresIn: "10s",
+              issuer: "owner",
+            }
+          );
+          console.log(decoded);
+
+          req.session.token = newToken;
+          console.log("토큰 재발급 완료");
+          res.render("board", { data: data });
+        }
+      });
     } else {
-      console.log(decoded);
+      res.render("board", { data: data });
     }
   });
-
-  res.render("board", { data: data });
 });
 
 // 글 추가

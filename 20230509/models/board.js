@@ -13,7 +13,7 @@ const boardFun = {
   },
 
   // 글 추가
-  insert: async (title, content,img) => {
+  insert: async (title, content, img) => {
     try {
       const [[{ userId }]] = await mysql.query("SELECT * FROM nowLogin");
       const [[{ nickName }]] = await mysql.query(
@@ -22,8 +22,8 @@ const boardFun = {
       );
 
       await mysql.query(
-        "INSERT INTO board (title,content,userId,nickName,img) VALUES(?,?,?,?,?)",
-        [title, content, userId, nickName,img]
+        "INSERT INTO board (title,content,userId,nickName,img,foreUserId) VALUES(?,?,?,?,?,?)",
+        [title, content, userId, nickName, img, userId]
       );
     } catch (error) {
       console.log("모델 보드에 삽입", error);
@@ -119,7 +119,7 @@ const boardFun = {
   // 이미지 업로드
   uploadImg: async (id, img) => {
     try {
-      const boardId=mysql.query('SELECT id ')
+      const boardId = mysql.query("SELECT id ");
       const sql = "INSERT INTO image(image,boardId) VALUES(?,?)";
       await mysql.query(sql, [img, id], (err) => {
         if (err) {
@@ -127,6 +127,17 @@ const boardFun = {
         }
       });
     } catch (error) {}
+  },
+  // 해당 유저의 모든 글 보기
+  getAllboardUser: async (userId) => {
+    try {
+      const sql =
+        "SELECT board.id,board.title,board.content,board.like,board.likeId,board.img FROM board INNER JOIN users ON users.id=board.foreUserId WHERE users.id=?";
+      const [boardList] = await mysql.query(sql, [userId]);
+      return boardList;
+    } catch (error) {
+      console.log("getAllboardUser in model board", error);
+    }
   },
 };
 

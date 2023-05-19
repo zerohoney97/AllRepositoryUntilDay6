@@ -7,6 +7,7 @@ const { signInrouter } = require("./router/signIn");
 const { signUprouter } = require("./router/signUp");
 //게시판 라우터
 const { boarRouter } = require("./router/board");
+const { mypageRouter } = require("./router/mypage");
 
 const nowLogin = {};
 
@@ -36,6 +37,7 @@ app.use(e.static(path.join(__dirname, "public")));
 app.use("/signIn", signInrouter);
 app.use("/signUp", signUprouter);
 app.use("/board", boarRouter);
+app.use("/mypage", mypageRouter);
 
 app.listen(8080, () => {
   console.log("성공했구나 이녀석...");

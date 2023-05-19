@@ -1,7 +1,6 @@
 const { boardFun } = require("../models/board");
 const { controllUsers } = require("../controllers/users");
 
-
 const controlBoards = {
   ViewAllBoard: async (req, res) => {
     try {
@@ -16,7 +15,7 @@ const controlBoards = {
     try {
       const { title, content } = req.body;
       const img = `/images/${req.file.filename}`;
-      await boardFun.insert(title, content,img);
+      await boardFun.insert(title, content, img);
     } catch (error) {
       console.log("컨트롤러에 있는 삽입", error);
     }
@@ -24,6 +23,8 @@ const controlBoards = {
   SelectBoard: async (req, res) => {
     try {
       const tableId = req.params;
+      console.log("시작", tableId, "끝");
+
       const data = await boardFun.selectBoard(tableId);
       return data;
     } catch (error) {
@@ -71,10 +72,20 @@ const controlBoards = {
     try {
       const { id } = req.params;
       const img = `/images/${req.file.filename}`;
-      
+
       await boardFun.uploadImg(id, img);
     } catch (error) {
       console.log("컨트롤러의 보드", error);
+    }
+  },
+  // 해당 유저의 모든 글 불러오기
+  GetAllBaordsUser: async (req, res) => {
+    try {
+      const nowLogin = await controllUsers.GetNowLogin(req, res);
+      const dataList = await boardFun.getAllboardUser(nowLogin);
+      return dataList;
+    } catch (error) {
+      console.log("GetAllBaordsUser in board controller", error);
     }
   },
 };

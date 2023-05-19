@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/board.css" />
+
+</head>
+<body>
+    <h1>mypage</h1>
+    <div class="table">
+        <ul class="table-head">
+          <li>번호</li>
+          <li>제목</li>
+          <li>내용</li>
+          <li>글쓴이</li>
+          <li>삭제</li>
+          <li>수정</li>
+        </ul>
+        <% data.forEach((el,index)=>{ %>
+        <ul class="table-row">
+          <li><%= el.id %></li>
+          <li>
+            <a
+              href="/board/view/<%= el.id %>"
+              style="text-decoration: none; color: black"
+              ><%= el.title%></a
+            >
+          </li>
+          <li><%= el.content%></li>
+          <li><%= el.nickName%></li>
+          <li>
+            <a
+              href="/board/delete/<%= el.id %>"
+              style="text-decoration: none; color: black"
+              >삭제</a
+            >
+          </li>
+          <li>
+            <a
+              href="/board/edit/<%= el.id %>"
+              style="text-decoration: none; color: black"
+              >수정</a
+            >
+          </li>
+        </ul>
+        <hr style="width: 99%; border: 1px solid #146C94" />
+        <%}) %>
+      </div>
+  
+</body>
+</html>
