@@ -10,4 +10,3 @@ ALTER TABLE board ADD foreUserId INT;
 
 ALTER TABLE board ADD CONSTRAINT fk_toy_user FOREIGN KEY (foreUserId) REFERENCES users (id);
 SELECT board.id,board.title,board.content,board.like,board.likeId,board.img FROM board INNER JOIN users ON users.id=board.`foreUserId` WHERE users.id=6;
-
