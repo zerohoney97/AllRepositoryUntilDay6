@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>작성자: <%= data.name %></h1>
+    <ul>
+      <% data.Posts.forEach((post)=>{ %>
+      <li>
+        <p><%= post.msg %></p>
+        <form action="/boarder/view_update/<%= post.id %>" method="post">
+          <input type="text" name="msg" />
+          <button>수정</button>
+        </form>
+        <a href="/boarder/del/<%= post.id %>">글 삭제</a>
+      </li>
+      <% })%>
+    </ul>
+  </body>
+  <script></script>
+</html>

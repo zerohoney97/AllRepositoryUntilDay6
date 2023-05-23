@@ -94,12 +94,10 @@ app.get("/view/:name", (req, res) => {
       { model: Post },
     ],
   }).then((e) => {
-    console.log(e.dataValues,'전');
     e.dataValues.Posts = e.dataValues.Posts.map((a) => {
       return a.dataValues;
     });
     const Posts = e.dataValues;
-    console.log(Posts,'후');
     res.render("view", { data: Posts });
   });
 });
