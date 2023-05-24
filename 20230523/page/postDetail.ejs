@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>제목: <%= data.title %></h1>
+    <h2>글쓴이: <%= data.writer%></h2>
+    <h3>내용: <%= data.content%></h3>
+    <a href="/post">돌아가기</a> <br />
+
+    <form action="/comment/insert/<%= data.id%>" method="post">
+      <label for="">댓글 쓰기</label>
+      <input type="text" name="content" id="commentInput" />
+      <button id="commentBtn">댓글 입력</button>
+    </form>
+
+    <ul>
+      <% commentData.forEach((el)=>{ %>
+      <li><%= el.writer %></li>
+      <li><%= el.content %></li>
+
+      <% }) %>
+    </ul>
+
+    <a href="/post/update/<%= data.id%>">수정</a>
+    <a href="/post/del/<%= data.id%>">삭제</a>
+  </body>
+
+  <script>
+    let grade_for_id = "<%=grade_for_id%>";
+    console.log(grade_for_id);
+    let commentInput = document.querySelector("#commentInput");
+    let commentBtn = document.querySelector("#commentBtn");
+    if (grade_for_id == 1) {
+      commentInput.disabled = true;
+      commentBtn.disabled = true;
+      commentInput.placeholder = "게시글 두개 이상 달아라..";
+    }
+  </script>
+</html>
