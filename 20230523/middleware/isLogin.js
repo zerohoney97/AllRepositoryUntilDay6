@@ -21,7 +21,6 @@ module.exports.checkGrade = async (req, res, next) => {
     where: { id: decoded.id },
     include: [{ model: Post }],
   });
-console.log(data,'asdasdasdsad');
 const newData = data.dataValues.Posts.map((a) => {
     return a.dataValues;
   });

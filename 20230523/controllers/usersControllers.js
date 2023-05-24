@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Comment } = require("../models");
 const jwt = require("jsonwebtoken");
 const dot = require("dotenv").config();
 const bcrypt = require("bcrypt");
@@ -47,10 +47,23 @@ const userControllers = {
             }
           );
           req.session.token = token;
+          // 운영자 확인
           if (data.dataValues.isAdmin) {
             res.redirect("/users/admin");
           } else {
-            res.redirect("/post");
+            // 수락됐는지 확인
+            if (data.dataValues.isAccept) {
+              // 거절됐는지 확인
+              if (
+                data.dataValues.username == `notallowed!@#${data.dataValues.id}`
+              ) {
+                res.send("거절한다.-운영자");
+              } else {
+                res.redirect("/post");
+              }
+            } else {
+              res.send("너는 못 지나간다-운영자");
+            }
           }
         } else {
           return res.send("비밀번호가 잘 못 되었습니다.");
@@ -70,16 +83,46 @@ const userControllers = {
     });
     return newData;
   },
+  // 유저 허락
   changeAcceptTrue: async (req, res) => {
     const { id } = req.params;
     await User.update({ isAccept: true }, { where: { id } });
     res.redirect("/users/admin");
   },
+  // 유저 거절
+  changeAcceptFalse: async (req, res) => {
+    const { id } = req.params;
+    await User.update(
+      { username: `notallowed!@#${id}`, isAccept: true },
+      { where: { id } }
+    );
+    res.redirect("/users/admin");
+  },
+  changeUserName: async (req, res) => {
+    const { id } = req.params;
+    const { username } = req.body;
+    console.log(req.decoded);
+    await User.update({ username: username }, { where: { id } });
+    await Comment.update(
+      { writer: username },
+      { where: { writer: req.decoded.username } }
+    );
+    res.redirect("/users/login");
+  },
+  changeUserId: async (req, res) => {
+    const { id } = req.params;
+    const { user_id } = req.body;
 
+    await User.update({ user_id }, { where: { id } });
+    res.redirect("/users/login");
+  },
   getGrade: async (req, res) => {
     const { decoded } = req;
     const data = await User.findOne({ where: { id: decoded.id } });
     return data.dataValues.grade_for_id;
+  },
+  getLoginUser: async (req, res) => {
+    return req.decoded;
   },
 };
 

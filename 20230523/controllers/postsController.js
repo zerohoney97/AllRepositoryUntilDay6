@@ -1,4 +1,4 @@
-const { Post } = require("../models");
+const { Post, User ,Comment} = require("../models");
 
 const postControllers = {
   insert: async (req, res) => {
@@ -53,10 +53,29 @@ const postControllers = {
     await Post.destroy({ where: { id } });
     res.redirect("/post");
   },
+  // 특정 유저가 작성한 글
   getUserPost: async (req, res) => {
     const { decoded } = req;
-    const data = await Post.findAll({ where: { id: decoded.id } });
-    return data.dataValues;
+    const data = await User.findOne({
+      where: { id: decoded.id },
+      include: [{ model: Post }],
+    });
+    const newData = data.Posts.map((a) => {
+      return a.dataValues;
+    });
+    return newData;
+  },
+  // 특정 유저가 작성한 댓글
+  getUserComment: async (req, res) => {
+    const { decoded } = req;
+    const data = await Comment.findAll({
+      where: { writer: decoded.username },
+    });
+
+    const newData = data.map((a) => {
+      return a.dataValues;
+    });
+    return newData;
   },
 };
 

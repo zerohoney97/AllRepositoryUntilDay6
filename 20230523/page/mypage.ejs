@@ -7,6 +7,8 @@
     <title>Document</title>
   </head>
   <body>
+    <h1><%=nowLogin.username %> 님 어서오셈 </h1>
+    <h1>지금까지 작성한 게시글</h1>
     <ul>
       <% data.forEach((el)=>{ %>
       <li><a href="/post/view/<%= el.id %>"> <%= el.title%></a></li>
@@ -15,8 +17,28 @@
       <br />
       <br />
       <br />
-
       <%})%>
     </ul>
+    <h1>지금까지 작성한 댓글</h1>
+    <ul>
+      <% commentData.forEach((el)=>{ %>
+      <li><a href="/post/view/<%= el.post_for_id %>"> 해당 글 보러가기</a></li>
+      <li><%= el.content%></li>
+      <br />
+      <br />
+      <br />
+      <br />
+      <%})%>
+    </ul>
+    <form action="/users/update/username/<%= nowLogin.id %>" method="post">
+      <label for="">닉네임 변경</label>
+      <input type="text" name="username" />
+      <button>닉 변경</button>
+    </form>
+    <form action="/users/update/userId/<%= nowLogin.id %>"" method="post">
+      <label for="">아이디 변경</label>
+      <input type="text" name="user_id" />
+      <button>아이디 변경</button>
+    </form>
   </body>
 </html>
