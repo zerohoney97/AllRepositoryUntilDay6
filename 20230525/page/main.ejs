@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+      body {
+        position: relative;
+        height: 100vh;
+        list-style: none;
+      }
+      .content {
+        position: absolute;
+        /* 무조건 가운데로 */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 500px;
+        border: 1px solid;
+      }
+
+      #send {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border: 1px solid;
+        box-sizing: border-box;
+        display: flex;
+      }
+      #send #msg {
+        border: 0;
+        box-sizing: border-box;
+        padding: 10px;
+        width: 85%;
+      }
+
+      #send #sendBtn {
+        background-color: skyblue;
+        border: none;
+        box-sizing: border-box;
+        padding: 10px;
+        width: 15%;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      #message {
+        margin: 0;
+        padding: 0;
+      }
+      #login {
+        width: 300px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .join_text {
+        background-color: gray;
+        list-style: none;
+      }
+      .leave_text {
+        background-color: greenyellow;
+        border: 1px solid skyblue;
+        list-style: none;
+      }
+      #main {
+        display: none;
+      }
+
+      .tab {
+        width: 200px;
+        height: 600px;
+        border: 1px solid;
+        position: absolute;
+        right: 0;
+      }
+      .tab li {
+        list-style: none;
+        left: 0;
+        margin: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div>귀여운 동물 카톡</div>
+      <div id="login">
+        <p>login</p>
+        <input type="text" id="username" />
+        <button id="loginBtn">connect</button>
+      </div>
+      <div id="main">
+        <select name="" id="rooms">
+          <option value="cat">고양이 방</option>
+          <option value="dog">강아지 방</option>
+        </select>
+        <div id="send">
+          <input type="text" id="msg" />
+          <button id="sendBtn">send</button>
+        </div>
+        <div id="send2">
+          <input type="text" id="msg2" />
+          <button id="sendBtn2">indivisual message</button>
+        </div>
+        <ul id="message"></ul>
+      </div>
+    </div>
+    <div class="tab">
+      <ul class="user-list"></ul>
+    </div>
+  </body>
+  <script>
+    window.onload = () => {
+      let userId = [];
+      loginBtn.onclick = () => {
+        login.style.display = "none";
+        main.style.display = "block";
+        const name = username.value;
+        console.log(rooms.options);
+        console.log(rooms.selectedIndex);
+        // 선택한 인덱스의 옵션 value 값
+        let room = rooms.options[rooms.selectedIndex].value;
+        let lastRoom = 0;
+        const socket = io.connect();
+        socket.emit("joinRoom", room, name);
+
+        rooms.onchange = (e) => {
+          // 이벤트가 일어난 태그
+          let el = e.target;
+          console.log(el.selectedIndex);
+          //   해당 유저가 room에서 떠남
+          socket.emit("leaveRoom", room, name);
+          socket.emit("subTab", lastRoom, name, room);
+          room = rooms.options[rooms.selectedIndex].value;
+          lastRoom = rooms.options[rooms.selectedIndex].value;
+          socket.emit("joinRoom", room, name);
+        };
+
+        socket.on("chat", (name, msg) => {
+          message.innerHTML += `
+            <li > 
+            ${name}:${msg}
+            </li>
+`;
+        });
+
+        socket.on("joinRoom", (room, _name, id) => {
+          message.innerHTML += `
+          
+          <li class='join_text'> 
+            ${_name}님이 ${room}에 들어왔음
+            </li>
+
+          `;
+          console.log("몇 번?");
+          // 유저 추가 요청
+          if (name == _name)
+            socket.emit("addToTab", rooms.selectedIndex, room, name);
+        });
+        // 탭에 유저 추가
+        socket.on("addToTab", (roomUser, room) => {
+          console.log(roomUser, "추가된 유저");
+          console.log(room);
+
+          document.querySelector(".user-list").innerHTML = "";
+
+          roomUser[room].forEach((a) => {
+            console.log(a.id, "아이디");
+            document.querySelector(".user-list").innerHTML += `
+              <li id=${a.id}> 
+                이름은 ${a.name},아이디: ${a.id}
+                </li>
+              `;
+          });
+          setTimeout(() => {
+            roomUser[room].forEach((a) => {
+              document
+                .querySelector(`#${a.id}`)
+                .addEventListener("click", () => {
+                  msg2.value = a.id;
+                  msg2.placeholer = a.id;
+                  console.log(msg2.value, "asd");
+                });
+            }, 200);
+          });
+        });
+        // 유저 빼기
+        socket.on("subTab", (roomUser, room) => {
+          roomUser[room].forEach((a) => {
+            document.querySelector(".user-list").innerHTML = "";
+            document.querySelector(".user-list").innerHTML += `
+              <li id=${a.id}> 
+                이름은 ${a.name},아이디: ${a.id}
+                </li>
+              `;
+          });
+        });
+
+        socket.on("leaveRoom", (room, name) => {
+          message.innerHTML += `
+<li class='leave_text'>
+    ${name}님이 ${room}에서 나갔습니다.
+    </li>
+`;
+        });
+        sendBtn.onclick = function () {
+          socket.emit("chat", room, name, msg.value);
+          msg.value = "";
+        };
+        sendBtn2.onclick = function () {
+          socket.emit("chat2", msg2.value, name, msg.value);
+          msg2.value = "";
+        };
+      };
+    };
+  </script>
+</html>
